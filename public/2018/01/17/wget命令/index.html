@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.houjiyi.com">
   <title>wget命令 | 后记忆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -38,7 +38,7 @@
   
 
 </head>
-</html>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -176,47 +176,47 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>wget命令用来从指定的URL下载文件。wget非常稳定，它在带宽很窄的情况下和不稳定网络中有很强的适应性，如果是由于网络的原因下载失败，wget会不断的尝试，直到整个文件下载完毕。如果是服务器打断下载过程，它会再次联到服务器上从停止的地方继续下载。这对从那些限定了链接时间的服务器上下载大文件非常有用。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget(选项)(参数)</span><br></pre></td></tr></table></figure>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget(选项)(参数)</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">-a&lt;日志文件&gt;：在指定的日志文件中记录资料的执行过程；</span><br><span class="line">-A&lt;后缀名&gt;：指定要下载文件的后缀名，多个后缀名之间使用逗号进行分隔；</span><br><span class="line">-b：进行后台的方式运行wget；</span><br><span class="line">-B&lt;连接地址&gt;：设置参考的连接地址的基地地址；</span><br><span class="line">-c：继续执行上次终端的任务；</span><br><span class="line">-C&lt;标志&gt;：设置服务器数据块功能标志on为激活，off为关闭，默认值为on；</span><br><span class="line">-d：调试模式运行指令；</span><br><span class="line">-D&lt;域名列表&gt;：设置顺着的域名列表，域名之间用“，”分隔；</span><br><span class="line">-e&lt;指令&gt;：作为文件“.wgetrc”中的一部分执行指定的指令；</span><br><span class="line">-h：显示指令帮助信息；</span><br><span class="line">-i&lt;文件&gt;：从指定文件获取要下载的URL地址；</span><br><span class="line">-l&lt;目录列表&gt;：设置顺着的目录列表，多个目录用“，”分隔；</span><br><span class="line">-L：仅顺着关联的连接；</span><br><span class="line">-r：递归下载方式；</span><br><span class="line">-nc：文件存在时，下载文件不覆盖原有文件；</span><br><span class="line">-nv：下载时只显示更新和出错信息，不显示指令的详细执行过程；</span><br><span class="line">-q：不显示指令执行过程；</span><br><span class="line">-nh：不查询主机名称；</span><br><span class="line">-v：显示详细执行过程；</span><br><span class="line">-V：显示版本信息；</span><br><span class="line">--passive-ftp：使用被动模式PASV连接FTP服务器；</span><br><span class="line">--follow-ftp：从HTML文件中下载FTP连接文件。</span><br></pre></td></tr></table></figure>
+<h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">-a&lt;日志文件&gt;：在指定的日志文件中记录资料的执行过程；</div><div class="line">-A&lt;后缀名&gt;：指定要下载文件的后缀名，多个后缀名之间使用逗号进行分隔；</div><div class="line">-b：进行后台的方式运行wget；</div><div class="line">-B&lt;连接地址&gt;：设置参考的连接地址的基地地址；</div><div class="line">-c：继续执行上次终端的任务；</div><div class="line">-C&lt;标志&gt;：设置服务器数据块功能标志on为激活，off为关闭，默认值为on；</div><div class="line">-d：调试模式运行指令；</div><div class="line">-D&lt;域名列表&gt;：设置顺着的域名列表，域名之间用“，”分隔；</div><div class="line">-e&lt;指令&gt;：作为文件“.wgetrc”中的一部分执行指定的指令；</div><div class="line">-h：显示指令帮助信息；</div><div class="line">-i&lt;文件&gt;：从指定文件获取要下载的URL地址；</div><div class="line">-l&lt;目录列表&gt;：设置顺着的目录列表，多个目录用“，”分隔；</div><div class="line">-L：仅顺着关联的连接；</div><div class="line">-r：递归下载方式；</div><div class="line">-nc：文件存在时，下载文件不覆盖原有文件；</div><div class="line">-nv：下载时只显示更新和出错信息，不显示指令的详细执行过程；</div><div class="line">-q：不显示指令执行过程；</div><div class="line">-nh：不查询主机名称；</div><div class="line">-v：显示详细执行过程；</div><div class="line">-V：显示版本信息；</div><div class="line">--passive-ftp：使用被动模式PASV连接FTP服务器；</div><div class="line">--follow-ftp：从HTML文件中下载FTP连接文件。</div></pre></td></tr></table></figure>
 <h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>URL：下载指定的URL地址。</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="使用wget下载单个文件"><a href="#使用wget下载单个文件" class="headerlink" title="使用wget下载单个文件"></a>使用wget下载单个文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.linuxde.net/testfile.zip</span><br></pre></td></tr></table></figure>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="使用wget下载单个文件"><a href="#使用wget下载单个文件" class="headerlink" title="使用wget下载单个文件"></a>使用wget下载单个文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://www.linuxde.net/testfile.zip</div></pre></td></tr></table></figure>
 <p>以下的例子是从网络下载一个文件并保存在当前目录，在下载的过程中会显示进度条，包含（下载完成百分比，已经下载的字节，当前下载速度，剩余下载时间）。</p>
-<h3 id="下载并以不同的文件名保存"><a href="#下载并以不同的文件名保存" class="headerlink" title="下载并以不同的文件名保存"></a>下载并以不同的文件名保存</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O wordpress.zip http://www.linuxde.net/download.aspx?id=1080</span><br></pre></td></tr></table></figure>
+<h3 id="下载并以不同的文件名保存"><a href="#下载并以不同的文件名保存" class="headerlink" title="下载并以不同的文件名保存"></a>下载并以不同的文件名保存</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O wordpress.zip http://www.linuxde.net/download.aspx?id=1080</div></pre></td></tr></table></figure>
 <p>wget默认会以最后一个符合<code>/</code>的后面的字符来命令，对于动态链接的下载通常文件名会不正确。</p>
 <p>错误：下面的例子会下载一个文件并以名称<code>download.aspx?id=1080</code>保存:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.linuxde.net/download?id=1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://www.linuxde.net/download?id=1</div></pre></td></tr></table></figure>
 <p>即使下载的文件是zip格式，它仍然以<code>download.php?id=1080</code>命令。</p>
 <p>正确：为了解决这个问题，我们可以使用参数<code>-O</code>来指定一个文件名：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O wordpress.zip http://www.linuxde.net/download.aspx?id=1080</span><br></pre></td></tr></table></figure>
-<h3 id="wget限速下载"><a href="#wget限速下载" class="headerlink" title="wget限速下载"></a>wget限速下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --limit-rate=300k http://www.linuxde.net/testfile.zip</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O wordpress.zip http://www.linuxde.net/download.aspx?id=1080</div></pre></td></tr></table></figure>
+<h3 id="wget限速下载"><a href="#wget限速下载" class="headerlink" title="wget限速下载"></a>wget限速下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --limit-rate=300k http://www.linuxde.net/testfile.zip</div></pre></td></tr></table></figure>
 <p>当你执行wget的时候，它默认会占用全部可能的宽带下载。但是当你准备下载一个大文件，而你还需要下载其它文件时就有必要限速了。</p>
-<h3 id="使用wget断点续传"><a href="#使用wget断点续传" class="headerlink" title="使用wget断点续传"></a>使用wget断点续传</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -c http://www.linuxde.net/testfile.zip</span><br></pre></td></tr></table></figure>
+<h3 id="使用wget断点续传"><a href="#使用wget断点续传" class="headerlink" title="使用wget断点续传"></a>使用wget断点续传</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -c http://www.linuxde.net/testfile.zip</div></pre></td></tr></table></figure>
 <p>使用<code>wget -c</code>重新启动下载中断的文件，对于我们下载大文件时突然由于网络等原因中断非常有帮助，我们可以继续接着下载而不是重新下载一个文件。需要继续中断的下载时可以使用<code>-c</code>参数。</p>
-<h3 id="使用wget后台下载"><a href="#使用wget后台下载" class="headerlink" title="使用wget后台下载"></a>使用wget后台下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget -b http://www.linuxde.net/testfile.zip</span><br><span class="line"></span><br><span class="line">Continuing in background, pid 1840.</span><br><span class="line">Output will be written to `wget-log&apos;.</span><br></pre></td></tr></table></figure>
+<h3 id="使用wget后台下载"><a href="#使用wget后台下载" class="headerlink" title="使用wget后台下载"></a>使用wget后台下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">wget -b http://www.linuxde.net/testfile.zip</div><div class="line"></div><div class="line">Continuing in background, pid 1840.</div><div class="line">Output will be written to `wget-log&apos;.</div></pre></td></tr></table></figure>
 <p>对于下载非常大的文件的时候，我们可以使用参数<code>-b</code>进行后台下载，你可以使用以下命令来察看下载进度：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -f wget-log</span><br></pre></td></tr></table></figure>
-<h3 id="tail-f-wget-log"><a href="#tail-f-wget-log" class="headerlink" title="tail -f wget-log"></a>tail -f wget-log</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --user-agent=&quot;Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16&quot; http://www.linuxde.net/testfile.zip</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail -f wget-log</div></pre></td></tr></table></figure>
+<h3 id="tail-f-wget-log"><a href="#tail-f-wget-log" class="headerlink" title="tail -f wget-log"></a>tail -f wget-log</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --user-agent=&quot;Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16&quot; http://www.linuxde.net/testfile.zip</div></pre></td></tr></table></figure>
 <p>有些网站能通过根据判断代理名称不是浏览器而拒绝你的下载请求。不过你可以通过<code>--user-agent</code>参数伪装。</p>
 <h3 id="测试下载链接"><a href="#测试下载链接" class="headerlink" title="测试下载链接"></a>测试下载链接</h3><p>当你打算进行定时下载，你应该在预定时间测试下载链接是否有效。我们可以增加<code>--spider</code>参数进行检查。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --spider URL</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --spider URL</div></pre></td></tr></table></figure>
 <p>如果下载链接正确，将会显示:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Spider mode enabled. Check if remote file exists.</span><br><span class="line">HTTP request sent, awaiting response... 200 OK</span><br><span class="line">Length: unspecified [text/html]</span><br><span class="line">Remote file exists and could contain further links,</span><br><span class="line">but recursion is disabled -- not retrieving.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Spider mode enabled. Check if remote file exists.</div><div class="line">HTTP request sent, awaiting response... 200 OK</div><div class="line">Length: unspecified [text/html]</div><div class="line">Remote file exists and could contain further links,</div><div class="line">but recursion is disabled -- not retrieving.</div></pre></td></tr></table></figure>
 <p>这保证了下载能在预定的时间进行，但当你给错了一个链接，将会显示如下错误:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget --spider url</span><br><span class="line">Spider mode enabled. Check if remote file exists.</span><br><span class="line">HTTP request sent, awaiting response... 404 Not Found</span><br><span class="line">Remote file does not exist -- broken link!!!</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">wget --spider url</div><div class="line">Spider mode enabled. Check if remote file exists.</div><div class="line">HTTP request sent, awaiting response... 404 Not Found</div><div class="line">Remote file does not exist -- broken link!!!</div></pre></td></tr></table></figure>
 <p>你可以在以下几种情况下使用<code>--spider</code>参数：</p>
 <ol>
 <li>定时下载之前进行检查</li>
 <li>间隔检测网站是否可用</li>
 <li>检查网站页面的死链接</li>
 </ol>
-<h3 id="增加重试次数"><a href="#增加重试次数" class="headerlink" title="增加重试次数"></a>增加重试次数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --tries=40 URL</span><br></pre></td></tr></table></figure>
+<h3 id="增加重试次数"><a href="#增加重试次数" class="headerlink" title="增加重试次数"></a>增加重试次数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --tries=40 URL</div></pre></td></tr></table></figure>
 <p>如果网络有问题或下载一个大文件也有可能失败。wget默认重试20次连接下载文件。如果需要，你可以使用–tries增加重试次数。</p>
-<h3 id="下载多个文件"><a href="#下载多个文件" class="headerlink" title="下载多个文件"></a>下载多个文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -i filelist.txt</span><br></pre></td></tr></table></figure>
+<h3 id="下载多个文件"><a href="#下载多个文件" class="headerlink" title="下载多个文件"></a>下载多个文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -i filelist.txt</div></pre></td></tr></table></figure>
 <p>首先，保存一份下载链接文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; filelist.txt</span><br><span class="line">url1</span><br><span class="line">url2</span><br><span class="line">url3</span><br><span class="line">url4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cat &gt; filelist.txt</div><div class="line">url1</div><div class="line">url2</div><div class="line">url3</div><div class="line">url4</div></pre></td></tr></table></figure>
 <p>接着使用这个文件和参数<code>-i</code>下载。</p>
-<h3 id="镜像网站"><a href="#镜像网站" class="headerlink" title="镜像网站"></a>镜像网站</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --mirror -p --convert-links -P ./LOCAL URL</span><br></pre></td></tr></table></figure>
+<h3 id="镜像网站"><a href="#镜像网站" class="headerlink" title="镜像网站"></a>镜像网站</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --mirror -p --convert-links -P ./LOCAL URL</div></pre></td></tr></table></figure>
 <p>下载整个网站到本地。</p>
 <ul>
 <li><code>--miror</code>开户镜像下载。</li>
@@ -224,26 +224,26 @@
 <li><code>--convert-links</code>下载后，转换成本地的链接。</li>
 <li><code>-P ./LOCAL</code>保存所有文件和目录到本地指定目录。</li>
 </ul>
-<h3 id="过滤指定格式下载"><a href="#过滤指定格式下载" class="headerlink" title="过滤指定格式下载"></a>过滤指定格式下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --reject=gif URL</span><br></pre></td></tr></table></figure>
+<h3 id="过滤指定格式下载"><a href="#过滤指定格式下载" class="headerlink" title="过滤指定格式下载"></a>过滤指定格式下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --reject=gif URL</div></pre></td></tr></table></figure>
 <p>下载一个网站，但你不希望下载图片，可以使用这条命令。</p>
-<h3 id="把下载信息存入日志文件"><a href="#把下载信息存入日志文件" class="headerlink" title="把下载信息存入日志文件"></a>把下载信息存入日志文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -o download.log URL</span><br></pre></td></tr></table></figure>
+<h3 id="把下载信息存入日志文件"><a href="#把下载信息存入日志文件" class="headerlink" title="把下载信息存入日志文件"></a>把下载信息存入日志文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -o download.log URL</div></pre></td></tr></table></figure>
 <p>不希望下载信息直接显示在终端而是在一个日志文件，可以使用。</p>
-<h3 id="限制总下载文件大小"><a href="#限制总下载文件大小" class="headerlink" title="限制总下载文件大小"></a>限制总下载文件大小</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -Q5m -i filelist.txt</span><br></pre></td></tr></table></figure>
+<h3 id="限制总下载文件大小"><a href="#限制总下载文件大小" class="headerlink" title="限制总下载文件大小"></a>限制总下载文件大小</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -Q5m -i filelist.txt</div></pre></td></tr></table></figure>
 <p>当你想要下载的文件超过5M而退出下载，你可以使用。注意：这个参数对单个文件下载不起作用，只能递归下载时才有效。</p>
-<h3 id="下载指定格式文件"><a href="#下载指定格式文件" class="headerlink" title="下载指定格式文件"></a>下载指定格式文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -r -A.pdf url</span><br></pre></td></tr></table></figure>
+<h3 id="下载指定格式文件"><a href="#下载指定格式文件" class="headerlink" title="下载指定格式文件"></a>下载指定格式文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -r -A.pdf url</div></pre></td></tr></table></figure>
 <p>可以在以下情况使用该功能：</p>
 <ul>
 <li>下载一个网站的所有图片。</li>
 <li>下载一个网站的所有视频。</li>
 <li>下载一个网站的所有PDF文件。</li>
 </ul>
-<h3 id="FTP下载"><a href="#FTP下载" class="headerlink" title="FTP下载"></a>FTP下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget ftp-url</span><br><span class="line">wget --ftp-user=USERNAME --ftp-password=PASSWORD url</span><br></pre></td></tr></table></figure>
+<h3 id="FTP下载"><a href="#FTP下载" class="headerlink" title="FTP下载"></a>FTP下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget ftp-url</div><div class="line">wget --ftp-user=USERNAME --ftp-password=PASSWORD url</div></pre></td></tr></table></figure>
 <p>可以使用wget来完成ftp链接的下载。</p>
 <p>使用wget匿名ftp下载： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget ftp-url</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget ftp-url</div></pre></td></tr></table></figure>
 <p>使用wget用户名和密码认证的ftp下载：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --ftp-user=USERNAME --ftp-password=PASSWORD url</span><br></pre></td></tr></table></figure>
-<p><a href="http://man.linuxde.net/wget" target="_blank" rel="noopener">原文地址</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --ftp-user=USERNAME --ftp-password=PASSWORD url</div></pre></td></tr></table></figure>
+<p><a href="http://man.linuxde.net/wget" target="_blank" rel="external">原文地址</a></p>
 
       
 
@@ -482,11 +482,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
+                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
+                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,10 +495,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,7 +510,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网速</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,34 +547,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读写分离</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网速</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dig</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,11 +570,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+                <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">dig</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,11 +586,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">n</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
+                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,11 +598,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">curl</a>
+                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,6 +611,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">lsof</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">free</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,7 +630,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">free</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,11 +638,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
+                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -662,7 +658,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
+                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -670,11 +666,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
+                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
+                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -694,7 +690,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vi</a>
+                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -710,15 +706,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wget</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">work</a>
+                <a href="javascript:void(0)" class="js-tag color3">vi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -746,11 +734,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">work</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ua</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">n</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -762,15 +778,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">个人</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -783,6 +791,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">时序图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -820,17 +832,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
-              </li>
             
             <div class="clearfix"></div>
           </ul>
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

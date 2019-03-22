@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.houjiyi.com">
   <title>nodejs+redis应用 | 后记忆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="什么是Redis  Redis是一个基于BSD开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API.">
-<meta name="keywords" content="centos7,redis">
+<meta name="keywords" content="redis,centos7">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nodejs+redis应用">
 <meta property="og:url" content="https://www.houjiyi.com/2017/10/10/nodejs+redis应用/index.html">
@@ -46,7 +46,7 @@
   
 
 </head>
-</html>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -195,7 +195,7 @@
 </li>
 <li><p>Redis安装</p>
 <p> Redis官方不支持windows安装，所以我们这里以centos7 为例：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">$ rpm -Uvh https://centos7.iuscommunity.org/ius-release.rpm</span><br><span class="line">$ yum install redis -y</span><br><span class="line">$ systemctl start redis</span><br><span class="line">$ systemctl enable redis</span><br><span class="line">$ systemctl status redis</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</div><div class="line">$ rpm -Uvh https://centos7.iuscommunity.org/ius-release.rpm</div><div class="line">$ yum install redis -y</div><div class="line">$ systemctl start redis</div><div class="line">$ systemctl enable redis</div><div class="line">$ systemctl status redis</div></pre></td></tr></table></figure>
 </li>
 <li><p>Redis运行<br> Redis服务器默认使用6379端口</p>
 <blockquote>
@@ -219,7 +219,7 @@
 <p>PING</p>
 </blockquote>
 <p> 返回PONG说明连通了</p>
-<p> <img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/QQ20171010-140354.png" alt></p>
+<p> <img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/QQ20171010-140354.png" alt=""></p>
 </li>
 <li><p>Redis的基本使用</p>
 <p> 4.1 字符串</p>
@@ -227,19 +227,19 @@
 <p> get key 得到key的value</p>
 <p> incr key key如果是整型自增1</p>
 <p> keys * 得到所有key</p>
-<p> <img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/QQ20171010-140737.png" alt></p>
+<p> <img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/QQ20171010-140737.png" alt=""></p>
 <p> 4.2 哈希</p>
 <p> hset key filed value 设置key对象的field属性的value</p>
 <p> hget key filed 得到key对象的field属性的value</p>
 <p> hgetall key 得到key对象的所有的属性和值</p>
-<p> <img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/QQ20171010-141134.png" alt></p>
+<p> <img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/QQ20171010-141134.png" alt=""></p>
 <p> 4.3 链表</p>
 <p> 适合存储社交网站的新鲜事</p>
 <p> lpush key value [value …] 向链表key左边添加元素</p>
 <p> rpush key value [value…] 向链表key右边添加元素</p>
 <p> lpop key 移除key链表左边第一个元素</p>
 <p> rpop key 移除key链表右边第一元素</p>
-<p> lrange key start stop 获取链表中某一段，包含最大值，-1表示最后一个元素<br> <img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/QQ20171010-141515.png" alt></p>
+<p> lrange key start stop 获取链表中某一段，包含最大值，-1表示最后一个元素<br> <img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/QQ20171010-141515.png" alt=""></p>
 <p> 4.4 集合类型</p>
 <p> 适合存储文章的标签，因为是唯一的</p>
 <p> sadd key member [member …] 向集合key中添加元素，如果元素已经存在则忽略</p>
@@ -247,18 +247,18 @@
 <p> smembers key 返回集合key中所有的元素</p>
 <p> sinter key [key …] 多个集合执行交集运算</p>
 <p> sdiff key [key …] 多个集合执行差集运算</p>
-<p> sunion key [key …] 多个集合执行并集运算<br> <img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/QQ20171010-141834.png" alt></p>
+<p> sunion key [key …] 多个集合执行并集运算<br> <img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/QQ20171010-141834.png" alt=""></p>
 <p> 4.5 有序集合</p>
 <p> 适用于通过文章访问量排序</p>
 <p> zadd key score member [score member …] 向有序集合key中加入一个或多个元素和分数，如果元素已经存在，则替换分数</p>
 <p> zrem key member [member …] 删除集合中一个或多个元素</p>
 <p> zrange key start stop [withscores] 按元素分数从小到大顺序返回元素，如需获得对应元素的分数，在尾部加上withscores</p>
-<p> zrevrange key start stop [withscores] 按元素分数从大到小顺序返回元素<br> <img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/QQ20171010-142158.png" alt></p>
+<p> zrevrange key start stop [withscores] 按元素分数从大到小顺序返回元素<br> <img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/QQ20171010-142158.png" alt=""></p>
 </li>
 </ol>
 <p>5.Redis 数据库桌面管理工具</p>
-<p>下载地址:<a href="http://redisdesktop.com/download" target="_blank" rel="noopener">http://redisdesktop.com/download</a></p>
-<p>可以很方便的管理Redis数据库里的键值对<br><img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/QQ20171010-150845@2x.png" alt></p>
+<p>下载地址:<a href="http://redisdesktop.com/download" target="_blank" rel="external">http://redisdesktop.com/download</a></p>
+<p>可以很方便的管理Redis数据库里的键值对<br><img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/QQ20171010-150845@2x.png" alt=""></p>
 <p>6.Redis 数据库其他说明<br>Redis默认支持16个数据库，编号0~15，每个数据库是独立的不能相互访问，可以通过</p>
 <blockquote>
 <p>SELECT 数据库编号</p>
@@ -310,9 +310,9 @@
 <p> 通过redis.createClient(port,host,options)来连接redis服务器</p>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">var redis = require(&quot;redis&quot;),</span><br><span class="line">    client = redis.createClient(6380,&quot;117.121.25.228&quot;,&#123;&#125;);</span><br><span class="line"></span><br><span class="line">exports.throw = function(bottle,callback)&#123;</span><br><span class="line">    bottle.time = bottle.time || Date.now();</span><br><span class="line">    var bottleId = Math.random().toString(16);</span><br><span class="line">    var type = &#123;male:0,female:1&#125;;</span><br><span class="line">    console.log(type[bottle.type]);</span><br><span class="line">    /*client.SELECT选择数据库编号*/</span><br><span class="line">    client.SELECT(type[bottle.type],function()&#123;</span><br><span class="line">        /*client.HMSET 保存哈希键值*/</span><br><span class="line">        client.HMSET(bottleId,bottle,function(err,result)&#123;</span><br><span class="line">            if(err)&#123;</span><br><span class="line">                return callback(&#123;code:0,msg:&quot;过会儿再来试试吧！&quot;&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            callback(&#123;code:1,msg:result&#125;);</span><br><span class="line">            /*设置过期时间为1天*/</span><br><span class="line">            client.EXPIRE(bottleId,86400);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">exports.pick = function(info,callback)&#123;</span><br><span class="line">    var type = &#123;all:Math.round(Math.random()),male:0,female:1&#125;;</span><br><span class="line">    info.type = info.type || &apos;all&apos;;</span><br><span class="line">    client.SELECT(type[info.type],function()&#123;</span><br><span class="line">        /*随机返回当前数据库的一个键*/</span><br><span class="line">        client.RANDOMKEY(function(err,bottleId)&#123;</span><br><span class="line">            if(!bottleId)&#123;</span><br><span class="line">                return callback(&#123;code:0,msg:&quot;大海空空如也...&quot;&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            /*根据key返回哈希对象*/</span><br><span class="line">            client.HGETALL(bottleId,function(err,bottle)&#123;</span><br><span class="line">                if(err)&#123;</span><br><span class="line">                    return callback(&#123;code:0,msg:&quot;漂流瓶破损了...&quot;&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">                callback(&#123;code:1,msg:bottle&#125;);</span><br><span class="line">                /*根据key删除键值*/</span><br><span class="line">                client.DEL(bottleId);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">var redis = require(&quot;redis&quot;),</div><div class="line">    client = redis.createClient(6380,&quot;117.121.25.228&quot;,&#123;&#125;);</div><div class="line"></div><div class="line">exports.throw = function(bottle,callback)&#123;</div><div class="line">    bottle.time = bottle.time || Date.now();</div><div class="line">    var bottleId = Math.random().toString(16);</div><div class="line">    var type = &#123;male:0,female:1&#125;;</div><div class="line">    console.log(type[bottle.type]);</div><div class="line">    /*client.SELECT选择数据库编号*/</div><div class="line">    client.SELECT(type[bottle.type],function()&#123;</div><div class="line">        /*client.HMSET 保存哈希键值*/</div><div class="line">        client.HMSET(bottleId,bottle,function(err,result)&#123;</div><div class="line">            if(err)&#123;</div><div class="line">                return callback(&#123;code:0,msg:&quot;过会儿再来试试吧！&quot;&#125;);</div><div class="line">            &#125;</div><div class="line">            callback(&#123;code:1,msg:result&#125;);</div><div class="line">            /*设置过期时间为1天*/</div><div class="line">            client.EXPIRE(bottleId,86400);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">exports.pick = function(info,callback)&#123;</div><div class="line">    var type = &#123;all:Math.round(Math.random()),male:0,female:1&#125;;</div><div class="line">    info.type = info.type || &apos;all&apos;;</div><div class="line">    client.SELECT(type[info.type],function()&#123;</div><div class="line">        /*随机返回当前数据库的一个键*/</div><div class="line">        client.RANDOMKEY(function(err,bottleId)&#123;</div><div class="line">            if(!bottleId)&#123;</div><div class="line">                return callback(&#123;code:0,msg:&quot;大海空空如也...&quot;&#125;);</div><div class="line">            &#125;</div><div class="line">            /*根据key返回哈希对象*/</div><div class="line">            client.HGETALL(bottleId,function(err,bottle)&#123;</div><div class="line">                if(err)&#123;</div><div class="line">                    return callback(&#123;code:0,msg:&quot;漂流瓶破损了...&quot;&#125;);</div><div class="line">                &#125;</div><div class="line">                callback(&#123;code:1,msg:bottle&#125;);</div><div class="line">                /*根据key删除键值*/</div><div class="line">                client.DEL(bottleId);</div><div class="line">            &#125;);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>作者：隔壁陈叔叔</p>
-<p>链接：<a href="http://www.jianshu.com/p/dbc1da93eae5" target="_blank" rel="noopener">http://www.jianshu.com/p/dbc1da93eae5</a></p>
+<p>链接：<a href="http://www.jianshu.com/p/dbc1da93eae5" target="_blank" rel="external">http://www.jianshu.com/p/dbc1da93eae5</a></p>
 <p>來源：简书</p>
 <p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 
@@ -328,11 +328,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">centos7</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">centos7</a>
         		</li>
       		
 		</ul>
@@ -553,11 +553,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
+                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
+                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,10 +566,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,7 +581,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网速</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,34 +618,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读写分离</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网速</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dig</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,11 +641,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+                <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">dig</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -665,11 +657,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">n</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
+                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -677,11 +669,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">curl</a>
+                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -690,6 +682,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">lsof</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">free</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -705,7 +701,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">free</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -713,11 +709,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
+                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -733,7 +729,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
+                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -741,11 +737,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
+                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
+                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -765,7 +761,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vi</a>
+                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -781,15 +777,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wget</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">work</a>
+                <a href="javascript:void(0)" class="js-tag color3">vi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -817,11 +805,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">work</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ua</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">n</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -833,15 +849,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">个人</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -854,6 +862,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">时序图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -891,17 +903,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
-              </li>
             
             <div class="clearfix"></div>
           </ul>
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

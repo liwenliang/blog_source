@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.houjiyi.com">
   <title>curl命令 | 后记忆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -38,7 +38,7 @@
   
 
 </head>
-</html>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -176,7 +176,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>curl命令是一个利用URL规则在命令行下工作的文件传输工具。它支持文件的上传和下载，所以是综合传输工具，但按传统，习惯称curl为下载工具。作为一款强力工具，curl支持包括HTTP、HTTPS、ftp等众多协议，还支持POST、cookies、认证、从指定偏移处下载部分文件、用户代理字符串、限速、文件大小、进度条等特征。做网页处理流程和数据检索自动化，curl可以祝一臂之力。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl(选项)(参数)</span><br></pre></td></tr></table></figure>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl(选项)(参数)</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><table>
 <thead>
@@ -199,7 +199,7 @@
 <td>可以使用“任何”身份验证方法</td>
 </tr>
 <tr>
-<td>-b/–cookie \&lt;name=string/file&gt;</td>
+<td>-b/–cookie \<name=string file=""></name=string></td>
 <td>cookie字符串或文件读取位置</td>
 </tr>
 <tr>
@@ -263,7 +263,7 @@
 <td>来源网址</td>
 </tr>
 <tr>
-<td>-E/–cert \&lt;cert[:passwd]&gt;</td>
+<td>-E/–cert \<cert[:passwd]></cert[:passwd]></td>
 <td>客户端证书文件和密码 (SSL)</td>
 </tr>
 <tr>
@@ -343,11 +343,11 @@
 <td>要求用 SSL/TLS 来进行ftp数据传输</td>
 </tr>
 <tr>
-<td>-F/–form \&lt;name=content&gt;</td>
+<td>-F/–form \<name=content></name=content></td>
 <td>模拟http表单提交数据</td>
 </tr>
 <tr>
-<td>–form-string \&lt;name=string&gt;</td>
+<td>–form-string \<name=string></name=string></td>
 <td>模拟http表单提交数据</td>
 </tr>
 <tr>
@@ -511,11 +511,11 @@
 <td>显示错误</td>
 </tr>
 <tr>
-<td>–socks4 \&lt;host[:port]&gt;</td>
+<td>–socks4 \<host[:port]></host[:port]></td>
 <td>用socks4代理给定主机和端口</td>
 </tr>
 <tr>
-<td>–socks5 \&lt;host[:port]&gt;</td>
+<td>–socks5 \<host[:port]></host[:port]></td>
 <td>用socks5代理给定主机和端口</td>
 </tr>
 <tr>
@@ -523,7 +523,7 @@
 <td></td>
 </tr>
 <tr>
-<td>-t/–telnet-option \&lt;OPT=val&gt;</td>
+<td>-t/–telnet-option \<opt=val></opt=val></td>
 <td>Telnet选项设置</td>
 </tr>
 <tr>
@@ -547,11 +547,11 @@
 <td>Spet URL to work with</td>
 </tr>
 <tr>
-<td>-u/–user \&lt;user[:password]&gt;</td>
+<td>-u/–user \<user[:password]></user[:password]></td>
 <td>设置服务器的用户和密码</td>
 </tr>
 <tr>
-<td>-U/–proxy-user \&lt;user[:password]&gt;</td>
+<td>-U/–proxy-user \<user[:password]></user[:password]></td>
 <td>设置代理用户名和密码</td>
 </tr>
 <tr>
@@ -559,7 +559,7 @@
 <td>什么输出完成后</td>
 </tr>
 <tr>
-<td>-x/–proxy \&lt;host[:port]&gt;</td>
+<td>-x/–proxy \<host[:port]></host[:port]></td>
 <td>在给定的端口上使用HTTP代理</td>
 </tr>
 <tr>
@@ -577,36 +577,36 @@
 </tbody>
 </table>
 <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h3><p>curl命令可以用来执行下载、发送各种HTTP请求，指定HTTP头部等操作。如果系统没有curl可以使用<code>yum install curl</code>安装，也可以下载安装。curl是将下载文件输出到stdout，将进度信息输出到stderr，不显示进度信息使用<code>--silent</code>选项。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl URL --silent</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl URL --silent</div></pre></td></tr></table></figure>
 <p>这条命令是将下载文件输出到终端，所有下载的数据都被写入到stdout。</p>
 <p>使用选项<code>-O</code>将下载的数据写入到文件，必须使用文件的绝对地址：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://man.linuxde.net/text.iso --silent -O</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl http://man.linuxde.net/text.iso --silent -O</div></pre></td></tr></table></figure>
 <p>选项<code>-o</code>将下载数据写入到指定名称的文件中，并使用<code>--progress</code>显示进度条：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl http://man.linuxde.net/test.iso -o filename.iso --progress</span><br><span class="line">######################################### 100.0%</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl http://man.linuxde.net/test.iso -o filename.iso --progress</div><div class="line">######################################### 100.0%</div></pre></td></tr></table></figure>
 <h3 id="断点续传"><a href="#断点续传" class="headerlink" title="断点续传"></a>断点续传</h3><p>curl能够从特定的文件偏移处继续下载，它可以通过指定一个便宜量来下载部分文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl URL/File -C 偏移量</span><br><span class="line"></span><br><span class="line">#偏移量是以字节为单位的整数，如果让curl自动推断出正确的续传位置使用-C -：</span><br><span class="line">curl -C -URL</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">curl URL/File -C 偏移量</div><div class="line"></div><div class="line">#偏移量是以字节为单位的整数，如果让curl自动推断出正确的续传位置使用-C -：</div><div class="line">curl -C -URL</div></pre></td></tr></table></figure>
 <h3 id="使用curl设置参照页字符串"><a href="#使用curl设置参照页字符串" class="headerlink" title="使用curl设置参照页字符串"></a>使用curl设置参照页字符串</h3><p>参照页是位于HTTP头部中的一个字符串，用来表示用户是从哪个页面到达当前页面的，如果用户点击网页A中的某个连接，那么用户就会跳转到B网页，网页B头部的参照页字符串就包含网页A的URL。</p>
 <p>使用<code>--referer</code>选项指定参照页字符串：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --referer http://www.google.com http://man.linuxde.net</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl --referer http://www.google.com http://man.linuxde.net</div></pre></td></tr></table></figure>
 <h3 id="用curl设置cookies"><a href="#用curl设置cookies" class="headerlink" title="用curl设置cookies"></a>用curl设置cookies</h3><p>使用<code>--cookie &quot;COKKIES&quot;</code>选项来指定cookie，多个cookie使用分号分隔：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://man.linuxde.net --cookie &quot;user=root;pass=123456&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl http://man.linuxde.net --cookie &quot;user=root;pass=123456&quot;</div></pre></td></tr></table></figure>
 <p>将cookie另存为一个文件，使用<code>--cookie-jar</code>选项：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl URL --cookie-jar cookie_file</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl URL --cookie-jar cookie_file</div></pre></td></tr></table></figure>
 <h3 id="用curl设置用户代理字符串"><a href="#用curl设置用户代理字符串" class="headerlink" title="用curl设置用户代理字符串"></a>用curl设置用户代理字符串</h3><p>有些网站访问会提示只能使用IE浏览器来访问，这是因为这些网站设置了检查用户代理，可以使用curl把用户代理设置为IE，这样就可以访问了。使用<code>--user-agent</code>或者<code>-A</code>选项：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl URL --user-agent &quot;Mozilla/5.0&quot;</span><br><span class="line">curl URL -A &quot;Mozilla/5.0&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl URL --user-agent &quot;Mozilla/5.0&quot;</div><div class="line">curl URL -A &quot;Mozilla/5.0&quot;</div></pre></td></tr></table></figure>
 <p>其他HTTP头部信息也可以使用curl来发送，使用<code>-H</code>“头部信息” 传递多个头部信息，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -H &quot;Host:man.linuxde.net&quot; -H &quot;accept-language:zh-cn&quot; URL</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -H &quot;Host:man.linuxde.net&quot; -H &quot;accept-language:zh-cn&quot; URL</div></pre></td></tr></table></figure>
 <h3 id="curl的带宽控制和下载配额"><a href="#curl的带宽控制和下载配额" class="headerlink" title="curl的带宽控制和下载配额"></a>curl的带宽控制和下载配额</h3><p>使用<code>--limit-rate</code>限制curl的下载速度：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl URL --limit-rate 50k</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl URL --limit-rate 50k</div></pre></td></tr></table></figure>
 <p>命令中用k（千字节）和m（兆字节）指定下载速度限制。</p>
 <p>使用<code>--max-filesize</code>指定可下载的最大文件大小：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl URL --max-filesize bytes</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl URL --max-filesize bytes</div></pre></td></tr></table></figure>
 <p>如果文件大小超出限制，命令则返回一个非0退出码，如果命令正常则返回0。</p>
 <h3 id="用curl进行认证"><a href="#用curl进行认证" class="headerlink" title="用curl进行认证"></a>用curl进行认证</h3><p>使用curl选项 -u 可以完成HTTP或者FTP的认证，可以指定密码，也可以不指定密码在后续操作中输入密码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -u user:pwd http://man.linuxde.net</span><br><span class="line">curl -u user http://man.linuxde.net</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -u user:pwd http://man.linuxde.net</div><div class="line">curl -u user http://man.linuxde.net</div></pre></td></tr></table></figure>
 <h3 id="只打印响应头部信息"><a href="#只打印响应头部信息" class="headerlink" title="只打印响应头部信息"></a>只打印响应头部信息</h3><p>通过<code>-I</code>或者<code>-head</code>可以只打印出HTTP头部信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost text]# curl -I http://man.linuxde.net</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.2.5</span><br><span class="line">date: Mon, 10 Dec 2012 09:24:34 GMT</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Vary: Accept-Encoding</span><br><span class="line">X-Pingback: http://man.linuxde.net/xmlrpc.php</span><br></pre></td></tr></table></figure>
-<p><a href="http://man.linuxde.net/curl" target="_blank" rel="noopener">原文地址</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@localhost text]# curl -I http://man.linuxde.net</div><div class="line">HTTP/1.1 200 OK</div><div class="line">Server: nginx/1.2.5</div><div class="line">date: Mon, 10 Dec 2012 09:24:34 GMT</div><div class="line">Content-Type: text/html; charset=UTF-8</div><div class="line">Connection: keep-alive</div><div class="line">Vary: Accept-Encoding</div><div class="line">X-Pingback: http://man.linuxde.net/xmlrpc.php</div></pre></td></tr></table></figure>
+<p><a href="http://man.linuxde.net/curl" target="_blank" rel="external">原文地址</a></p>
 
       
 
@@ -845,11 +845,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
+                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
+                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -858,10 +858,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -877,7 +873,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网速</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -894,34 +910,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读写分离</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网速</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dig</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -945,11 +933,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+                <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">dig</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -957,11 +949,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">n</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
+                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -969,11 +961,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">curl</a>
+                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -982,6 +974,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">lsof</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">free</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -997,7 +993,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">free</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1005,11 +1001,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
+                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1025,7 +1021,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
+                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1033,11 +1029,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
+                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
+                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1057,7 +1053,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vi</a>
+                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1073,15 +1069,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wget</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">work</a>
+                <a href="javascript:void(0)" class="js-tag color3">vi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1109,11 +1097,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">work</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ua</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">n</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1125,15 +1141,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">个人</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1146,6 +1154,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">时序图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1183,17 +1195,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
-              </li>
             
             <div class="clearfix"></div>
           </ul>
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

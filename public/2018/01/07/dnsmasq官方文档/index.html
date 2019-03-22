@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.houjiyi.com">
   <title>dnsmasq (简体中文) | 后记忆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -38,7 +38,7 @@
   
 
 </head>
-</html>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -178,62 +178,62 @@
         <p>Dnsmasq 提供 DNS 缓存和 DHCP 服务功能。作为域名解析服务器(DNS)，dnsmasq可以通过缓存 DNS 请求来提高对访问过的网址的连接速度。作为DHCP 服务器，dnsmasq 可以用于为局域网电脑分配内网ip地址和提供路由。DNS和DHCP两个功能可以同时或分别单独实现。dnsmasq轻量且易配置，适用于个人用户或少于50台主机的网络。此外它还自带了一个 PXE 服务器。<br><a id="more"></a></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>从官方仓库中安装 dnsmasq。</p>
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>编辑 dnsmasq 的配置文件 /etc/dnsmasq.conf 。这个文件包含大量的选项注释。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">警告: dnsmasq 默认启用其 DNS 服务器。如果不需要，必须明确地将其 DNS 端口设置为 0 禁用它：</span><br><span class="line">----</span><br><span class="line">/etc/dnsmasq.conf</span><br><span class="line">----</span><br><span class="line">port=0</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">提示： 查看配置文件语法是否正确，可执行下列命令：</span><br><span class="line">$ dnsmasq --test</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">警告: dnsmasq 默认启用其 DNS 服务器。如果不需要，必须明确地将其 DNS 端口设置为 0 禁用它：</div><div class="line">----</div><div class="line">/etc/dnsmasq.conf</div><div class="line">----</div><div class="line">port=0</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">提示： 查看配置文件语法是否正确，可执行下列命令：</div><div class="line">$ dnsmasq --test</div></pre></td></tr></table></figure>
 <h2 id="DNS-缓存设置"><a href="#DNS-缓存设置" class="headerlink" title="DNS 缓存设置"></a>DNS 缓存设置</h2><p>要在单台电脑上以守护进程方式启动dnsmasq做DNS缓存服务器，编辑/etc/dnsmasq.conf，添加监听地址：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listen-address=127.0.0.1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">listen-address=127.0.0.1</div></pre></td></tr></table></figure>
 <p>如果用此主机为局域网提供默认 DNS，请用为该主机绑定固定 IP 地址，设置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listen-address=192.168.x.x</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">listen-address=192.168.x.x</div></pre></td></tr></table></figure>
 <p>这种情况建议配置静态IP</p>
 <p>多个ip地址设置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listen-address=127.0.0.1,192.168.x.x</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">listen-address=127.0.0.1,192.168.x.x</div></pre></td></tr></table></figure>
 <h3 id="DNS-地址文件"><a href="#DNS-地址文件" class="headerlink" title="DNS 地址文件"></a>DNS 地址文件</h3><p>在配置好dnsmasq后，你需要编辑/etc/resolv.conf让DHCP客户端首先将本地地址(localhost)加入 DNS 文件(/etc/resolv.conf)，然后再通过其他DNS服务器解析地址。配置好DHCP客户端后需要重新启动网络来使设置生效</p>
 <h4 id="resolv-conf"><a href="#resolv-conf" class="headerlink" title="resolv.conf"></a>resolv.conf</h4><p>一种选择是一个纯粹的 resolv.conf 配置。要做到这一点，才使第一个域名服务器在/etc/resolv.conf 中指向localhost：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/etc/resolv.conf</span><br><span class="line"></span><br><span class="line">nameserver 127.0.0.1</span><br><span class="line"># External nameservers</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/etc/resolv.conf</div><div class="line"></div><div class="line">nameserver 127.0.0.1</div><div class="line"># External nameservers</div><div class="line">...</div></pre></td></tr></table></figure>
 <p>现在，DNS查询将首先解析dnsmasq，只检查外部的服务器如果DNSMasq无法解析查询. dhcpcd, 不幸的是，往往默认覆盖 /etc/resolv.conf, 所以如果你使用DHCP，这里有一个好主意来保护 /etc/resolv.conf,要做到这一点，追加 nohook resolv.conf到dhcpcd的配置文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/etc/dhcpcd.conf</span><br><span class="line">...</span><br><span class="line">nohook resolv.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/etc/dhcpcd.conf</div><div class="line">...</div><div class="line">nohook resolv.conf</div></pre></td></tr></table></figure>
 <p>也可以保护您的resolv.conf不被修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># chattr +i /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># chattr +i /etc/resolv.conf</div></pre></td></tr></table></figure>
 <h5 id="三个以上域名服务器"><a href="#三个以上域名服务器" class="headerlink" title="三个以上域名服务器"></a>三个以上域名服务器</h5><p>Linux 处理 DNS 请求时有个限制，在 resolv.conf 中最多只能配置三个域名服务器（nameserver）。作为一种变通方法,可以在 resolv.conf 文件中只保留 localhost 作为域名服务器，然后为外部域名服务器另外创建 resolv-file 文件。首先，为 dnsmasq 新建一个域名解析文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/etc/resolv.dnsmasq.conf</span><br><span class="line"># Google&apos;s nameservers, for example</span><br><span class="line">nameserver 8.8.8.8</span><br><span class="line">nameserver 8.8.4.4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/etc/resolv.dnsmasq.conf</div><div class="line"># Google&apos;s nameservers, for example</div><div class="line">nameserver 8.8.8.8</div><div class="line">nameserver 8.8.4.4</div></pre></td></tr></table></figure>
 <p>然后编辑 /etc/dnsmasq.conf 让 dnsmasq 使用新创建的域名解析文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/etc/dnsmasq.conf</span><br><span class="line">...</span><br><span class="line">resolv-file=/etc/resolv.dnsmasq.conf</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/etc/dnsmasq.conf</div><div class="line">...</div><div class="line">resolv-file=/etc/resolv.dnsmasq.conf</div><div class="line">...</div></pre></td></tr></table></figure>
 <h4 id="使用dhcpcd"><a href="#使用dhcpcd" class="headerlink" title="使用dhcpcd"></a>使用dhcpcd</h4><p>dhcpcd 可以是通过创建（或编辑）/etc/resolv.conf.head文件或 /etc/resolv.conf.tail文件来指定dns服务器，使/etc/resolv.conf不会被每次都被dhcpcd重写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;nameserver 127.0.0.1&quot; &gt; /etc/resolv.conf.head #设置dns服务器为127.0.0.1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &quot;nameserver 127.0.0.1&quot; &gt; /etc/resolv.conf.head #设置dns服务器为127.0.0.1</div></pre></td></tr></table></figure>
 <h4 id="使用dhclient"><a href="#使用dhclient" class="headerlink" title="使用dhclient"></a>使用dhclient</h4><p>要使用 dhclient， 取消 /etc/dhclient.conf 文件中如下行的注释：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prepend domain-name-servers 127.0.0.1;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">prepend domain-name-servers 127.0.0.1;</div></pre></td></tr></table></figure>
 <h3 id="使用NetworkManager"><a href="#使用NetworkManager" class="headerlink" title="使用NetworkManager"></a>使用NetworkManager</h3><p>NetworkManager 可以靠自身配置文件的设置项启动 dnsmasq 。在 NetworkManager.conf 文件的 [main] 节段添加 dns=dnsmasq 配置语句，然后禁用由 systemd 启动的 dnsmasq.service:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/etc/NetworkManager/NetworkManager.conf</span><br><span class="line">[main]</span><br><span class="line">plugins=keyfile</span><br><span class="line">dns=dnsmasq</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/etc/NetworkManager/NetworkManager.conf</div><div class="line">[main]</div><div class="line">plugins=keyfile</div><div class="line">dns=dnsmasq</div></pre></td></tr></table></figure>
 <p>可以在 /etc/NetworkManager/dnsmasq.d/ 目录下为 dnsmasq 创建自定义配置文件。例如，调整 DNS 缓存大小（保存在内存中）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/NetworkManager/dnsmasq.d/cache</span><br><span class="line">cache-size=1000</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/etc/NetworkManager/dnsmasq.d/cache</div><div class="line">cache-size=1000</div></pre></td></tr></table></figure>
 <p>dnsmasq 被 NetworkManager 启动后，此目录下配置文件中的配置将取代默认配置。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">提示： 这种方法可以让你启用特定域名的自定义DNS设置。例如: </span><br><span class="line">server=/example1.com/exemple2.com/xx.xxx.xxx.x </span><br><span class="line">改变第一个DNS地址，浏览以下网站example1.com, example2.com</span><br><span class="line">使用xx.xxx.xxx.xx。</span><br><span class="line">This method is preferred to a global DNS configuration </span><br><span class="line">when using particular DNS nameservers which lack of speed, </span><br><span class="line">stability, privacy and security.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">提示： 这种方法可以让你启用特定域名的自定义DNS设置。例如: </div><div class="line">server=/example1.com/exemple2.com/xx.xxx.xxx.x </div><div class="line">改变第一个DNS地址，浏览以下网站example1.com, example2.com</div><div class="line">使用xx.xxx.xxx.xx。</div><div class="line">This method is preferred to a global DNS configuration </div><div class="line">when using particular DNS nameservers which lack of speed, </div><div class="line">stability, privacy and security.</div></pre></td></tr></table></figure>
 <h4 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h4><p>启用 dnsmasq 在 NetworkManager 可能会中断仅持IPv6的DNS查询 (例如 dig -6 [hostname]) 否则将工作。 为了解决这个问题，创建以下文件将配置 dnsmasq 总是监听IPv6的loopback：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/NetworkManager/dnsmasq.d/ipv6_listen.conf</span><br><span class="line">listen-address=::1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/etc/NetworkManager/dnsmasq.d/ipv6_listen.conf</div><div class="line">listen-address=::1</div></pre></td></tr></table></figure>
 <p>此外， dnsmasq不优先考虑上游IPv6的DNS。不幸的是NetworkManager已不这样做 (Ubuntu Bug)。 一种解决方法是将禁用IPv4 DNS的NetworkManager的配置，假设存在。</p>
 <h4 id="其他方式"><a href="#其他方式" class="headerlink" title="其他方式"></a>其他方式</h4><p>另一种选择是在NetworkManagers“设置（通常通过右键单击小程序）和手动输入设置。设置将取决于前端中使用的类型;这个过程通常涉及右击小程序，编辑（或创建）一个配置文件，然后选择DHCP类型为“自动（指定地址）。”DNS地址将需要输入，通常以这种形式：127.0.0.1, DNS-server-one, ….</p>
 <h2 id="DHCP-服务器设置"><a href="#DHCP-服务器设置" class="headerlink" title="DHCP 服务器设置"></a>DHCP 服务器设置</h2><p>dnsmasq默认关闭DHCP功能，如果该主机需要为局域网中的其他设备提供IP和路由，应该对dnsmasq 配置文件(/etc/dnsmasq.conf)必要的配置如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># Only listen to routers&apos; LAN NIC.  Doing so opens up tcp/udp port 53 to</span><br><span class="line"># localhost and udp port 67 to world:</span><br><span class="line">interface=&lt;LAN-NIC&gt;</span><br><span class="line"></span><br><span class="line"># dnsmasq will open tcp/udp port 53 and udp port 67 to world to help with</span><br><span class="line"># dynamic interfaces (assigning dynamic ips). Dnsmasq will discard world</span><br><span class="line"># requests to them, but the paranoid might like to close them and let the </span><br><span class="line"># kernel handle them:</span><br><span class="line">bind-interfaces</span><br><span class="line"></span><br><span class="line"># Dynamic range of IPs to make available to LAN pc</span><br><span class="line">dhcp-range=192.168.111.50,192.168.111.100,12h</span><br><span class="line"></span><br><span class="line"># If you’d like to have dnsmasq assign static IPs, bind the LAN computer&apos;s</span><br><span class="line"># NIC MAC address:</span><br><span class="line">dhcp-host=aa:bb:cc:dd:ee:ff,192.168.111.50</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"># Only listen to routers&apos; LAN NIC.  Doing so opens up tcp/udp port 53 to</div><div class="line"># localhost and udp port 67 to world:</div><div class="line">interface=&lt;LAN-NIC&gt;</div><div class="line"></div><div class="line"># dnsmasq will open tcp/udp port 53 and udp port 67 to world to help with</div><div class="line"># dynamic interfaces (assigning dynamic ips). Dnsmasq will discard world</div><div class="line"># requests to them, but the paranoid might like to close them and let the </div><div class="line"># kernel handle them:</div><div class="line">bind-interfaces</div><div class="line"></div><div class="line"># Dynamic range of IPs to make available to LAN pc</div><div class="line">dhcp-range=192.168.111.50,192.168.111.100,12h</div><div class="line"></div><div class="line"># If you’d like to have dnsmasq assign static IPs, bind the LAN computer&apos;s</div><div class="line"># NIC MAC address:</div><div class="line">dhcp-host=aa:bb:cc:dd:ee:ff,192.168.111.50</div></pre></td></tr></table></figure>
 <h2 id="启动守护进程"><a href="#启动守护进程" class="headerlink" title="启动守护进程"></a>启动守护进程</h2><p>设置为开机启动：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># systemctl enable dnsmasq</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># systemctl enable dnsmasq</div></pre></td></tr></table></figure>
 <p>立即启动 dnsmashq：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># systemctl start dnsmasq</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># systemctl start dnsmasq</div></pre></td></tr></table></figure>
 <p>查看dnsmasq是否启动正常，查看系统日志：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># journalctl -u dnsmasq</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># journalctl -u dnsmasq</div></pre></td></tr></table></figure>
 <p>需要重启网络服务以使 DHCP 客户端重建一个新的 /etc/resolv.conf。</p>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h3 id="DNS-缓存"><a href="#DNS-缓存" class="headerlink" title="DNS 缓存"></a>DNS 缓存</h3><p>要测试查询速度，请访问一个 dnsmasq 启动后没有访问过的网站，执行 (dig (位于 dnsutils[broken link: replaced by bind-tools] 软件包):</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ dig archlinux.org | grep &quot;Query time&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ dig archlinux.org | grep &quot;Query time&quot;</div></pre></td></tr></table></figure>
 <p>再次运行命令，因为使用了缓存，查询时间应该大大缩短。</p>
 <h3 id="DHCP-服务器"><a href="#DHCP-服务器" class="headerlink" title="DHCP 服务器"></a>DHCP 服务器</h3><p>从一个连接到使用了 dnsmasq 的计算机的计算机，配置它使用 DHCP 自动获取 IP 地址，然后尝试连接到你平时使用的网络。</p>
 <h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><h3 id="避免OpenDNS重定向Google请求"><a href="#避免OpenDNS重定向Google请求" class="headerlink" title="避免OpenDNS重定向Google请求"></a>避免OpenDNS重定向Google请求</h3><p>要避免 OpenDNS 重定向所有 Google 请求到他们自己的搜索服务器，添加以下内容到 /etc/dnsmasq.conf：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server=/www.google.com/X.X.X.X</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">server=/www.google.com/X.X.X.X</div></pre></td></tr></table></figure>
 <p>用你的 ISP 的 DNS 服务器/路由器的 IP 替代 X.X.X.X 。</p>
-<h3 id="查看租约"><a href="#查看租约" class="headerlink" title="查看租约"></a>查看租约</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/lib/misc/dnsmasq.leases</span><br></pre></td></tr></table></figure>
+<h3 id="查看租约"><a href="#查看租约" class="headerlink" title="查看租约"></a>查看租约</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /var/lib/misc/dnsmasq.leases</div></pre></td></tr></table></figure>
 <h3 id="添加自定义域"><a href="#添加自定义域" class="headerlink" title="添加自定义域"></a>添加自定义域</h3><p>它可以将一个自定义域添加到主机中的（本地）网络：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local=/home.lan/</span><br><span class="line">domain=home.lan</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">local=/home.lan/</div><div class="line">domain=home.lan</div></pre></td></tr></table></figure>
 <p>在这个例子中可以ping主机/设备 (例如:您的主机文件中的定义) hostname.home.lan.</p>
 <p>取消扩展主机添加自定义域的主机条目：存在</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expand-hosts</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expand-hosts</div></pre></td></tr></table></figure>
 <p>如果没有这个设置，你必须域添加到/etc/hosts中的条目。</p>
 
       
@@ -473,11 +473,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
+                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
+                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -486,10 +486,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,7 +501,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网速</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,34 +538,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读写分离</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网速</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dig</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,11 +561,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+                <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">dig</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,11 +577,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">n</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
+                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,11 +589,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">curl</a>
+                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,6 +602,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">lsof</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">free</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -625,7 +621,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">free</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,11 +629,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
+                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,7 +649,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
+                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -661,11 +657,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
+                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
+                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -685,7 +681,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vi</a>
+                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -701,15 +697,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wget</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">work</a>
+                <a href="javascript:void(0)" class="js-tag color3">vi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -737,11 +725,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">work</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ua</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">n</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -753,15 +769,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">个人</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -774,6 +782,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">时序图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -811,17 +823,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
-              </li>
             
             <div class="clearfix"></div>
           </ul>
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.houjiyi.com">
   <title>chown命令 | 后记忆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -38,7 +38,7 @@
   
 
 </head>
-</html>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -204,25 +204,25 @@
 <p>　　命令：</p>
 <p>　　chown mail:mail log2012.log</p>
 <p>　　输出：　　</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test6]# ll</span><br><span class="line">---xr--r-- 1 root users 302108 11-30 08:39 linklog.log</span><br><span class="line">---xr--r-- 1 root users 302108 11-30 08:39 log2012.log</span><br><span class="line">-rw-r--r-- 1 root users     61 11-30 08:39 log2013.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2014.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2015.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2016.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2017.log</span><br><span class="line">[root@localhost test6]# chown mail:mail log2012.log </span><br><span class="line">[root@localhost test6]# ll</span><br><span class="line">---xr--r-- 1 root users 302108 11-30 08:39 linklog.log</span><br><span class="line">---xr--r-- 1 mail mail  302108 11-30 08:39 log2012.log</span><br><span class="line">-rw-r--r-- 1 root users     61 11-30 08:39 log2013.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2014.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2015.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2016.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2017.log</span><br><span class="line">[root@localhost test6]#</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[root@localhost test6]# ll</div><div class="line">---xr--r-- 1 root users 302108 11-30 08:39 linklog.log</div><div class="line">---xr--r-- 1 root users 302108 11-30 08:39 log2012.log</div><div class="line">-rw-r--r-- 1 root users     61 11-30 08:39 log2013.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2014.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2015.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2016.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2017.log</div><div class="line">[root@localhost test6]# chown mail:mail log2012.log </div><div class="line">[root@localhost test6]# ll</div><div class="line">---xr--r-- 1 root users 302108 11-30 08:39 linklog.log</div><div class="line">---xr--r-- 1 mail mail  302108 11-30 08:39 log2012.log</div><div class="line">-rw-r--r-- 1 root users     61 11-30 08:39 log2013.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2014.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2015.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2016.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2017.log</div><div class="line">[root@localhost test6]#</div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>　　<strong>实例2：改变文件拥有者和群组</strong></p>
 <p>　　命令：</p>
 <p>　　　　chown root: log2012.log</p>
 <p>　　输出：　　　　</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test6]# ll</span><br><span class="line">总计 604</span><br><span class="line">---xr--r-- 1 root users 302108 11-30 08:39 linklog.log</span><br><span class="line">---xr--r-- 1 mail mail  302108 11-30 08:39 log2012.log</span><br><span class="line">-rw-r--r-- 1 root users     61 11-30 08:39 log2013.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2014.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2015.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2016.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2017.log</span><br><span class="line">[root@localhost test6]# chown root: log2012.log </span><br><span class="line">[root@localhost test6]# ll</span><br><span class="line">总计 604</span><br><span class="line">---xr--r-- 1 root users 302108 11-30 08:39 linklog.log</span><br><span class="line">---xr--r-- 1 root root  302108 11-30 08:39 log2012.log</span><br><span class="line">-rw-r--r-- 1 root users     61 11-30 08:39 log2013.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2014.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2015.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2016.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2017.log</span><br><span class="line">[root@localhost test6]#</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">[root@localhost test6]# ll</div><div class="line">总计 604</div><div class="line">---xr--r-- 1 root users 302108 11-30 08:39 linklog.log</div><div class="line">---xr--r-- 1 mail mail  302108 11-30 08:39 log2012.log</div><div class="line">-rw-r--r-- 1 root users     61 11-30 08:39 log2013.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2014.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2015.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2016.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2017.log</div><div class="line">[root@localhost test6]# chown root: log2012.log </div><div class="line">[root@localhost test6]# ll</div><div class="line">总计 604</div><div class="line">---xr--r-- 1 root users 302108 11-30 08:39 linklog.log</div><div class="line">---xr--r-- 1 root root  302108 11-30 08:39 log2012.log</div><div class="line">-rw-r--r-- 1 root users     61 11-30 08:39 log2013.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2014.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2015.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2016.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2017.log</div><div class="line">[root@localhost test6]#</div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>　　<strong>实例3：改变文件群组</strong></p>
 <p>　　命令：</p>
 <p>　　　　chown :mail log2012.log</p>
 <p>　　输出：　　</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test6]# ll</span><br><span class="line">总计 604</span><br><span class="line">---xr--r-- 1 root users 302108 11-30 08:39 linklog.log</span><br><span class="line">---xr--r-- 1 root root  302108 11-30 08:39 log2012.log</span><br><span class="line">-rw-r--r-- 1 root users     61 11-30 08:39 log2013.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2014.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2015.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2016.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2017.log</span><br><span class="line">[root@localhost test6]# chown :mail log2012.log </span><br><span class="line">[root@localhost test6]# ll</span><br><span class="line">总计 604</span><br><span class="line">---xr--r-- 1 root users 302108 11-30 08:39 linklog.log</span><br><span class="line">---xr--r-- 1 root mail  302108 11-30 08:39 log2012.log</span><br><span class="line">-rw-r--r-- 1 root users     61 11-30 08:39 log2013.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2014.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2015.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2016.log</span><br><span class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2017.log</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">[root@localhost test6]# ll</div><div class="line">总计 604</div><div class="line">---xr--r-- 1 root users 302108 11-30 08:39 linklog.log</div><div class="line">---xr--r-- 1 root root  302108 11-30 08:39 log2012.log</div><div class="line">-rw-r--r-- 1 root users     61 11-30 08:39 log2013.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2014.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2015.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2016.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2017.log</div><div class="line">[root@localhost test6]# chown :mail log2012.log </div><div class="line">[root@localhost test6]# ll</div><div class="line">总计 604</div><div class="line">---xr--r-- 1 root users 302108 11-30 08:39 linklog.log</div><div class="line">---xr--r-- 1 root mail  302108 11-30 08:39 log2012.log</div><div class="line">-rw-r--r-- 1 root users     61 11-30 08:39 log2013.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2014.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2015.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2016.log</div><div class="line">-rw-r--r-- 1 root users      0 11-30 08:39 log2017.log</div></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>　　<strong>实例4：改变指定目录以及其子目录下的所有文件的拥有者和群组 </strong></p>
 <p>　　命令：</p>
 <p>　　　　<strong>chown -R <em>-v</em> root:mail test6</strong></p>
 <p>　　输出：　　</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# ll</span><br><span class="line">drwxr-xr-x 2 root users   4096 11-30 08:39 test6</span><br><span class="line">[root@localhost test]# chown -R -v root:mail test6</span><br><span class="line">“test6/log2014.log” 的所有者已更改为 root:mail</span><br><span class="line">“test6/linklog.log” 的所有者已更改为 root:mail</span><br><span class="line">“test6/log2015.log” 的所有者已更改为 root:mail</span><br><span class="line">“test6/log2013.log” 的所有者已更改为 root:mail</span><br><span class="line">“test6/log2012.log” 的所有者已保留为 root:mail</span><br><span class="line">“test6/log2017.log” 的所有者已更改为 root:mail</span><br><span class="line">“test6/log2016.log” 的所有者已更改为 root:mail</span><br><span class="line">“test6” 的所有者已更改为 root:mail</span><br><span class="line">[root@localhost test]# ll</span><br><span class="line">drwxr-xr-x 2 root mail   4096 11-30 08:39 test6</span><br><span class="line">[root@localhost test]# cd test6</span><br><span class="line">[root@localhost test6]# ll</span><br><span class="line">总计 604</span><br><span class="line">---xr--r-- 1 root mail 302108 11-30 08:39 linklog.log</span><br><span class="line">---xr--r-- 1 root mail 302108 11-30 08:39 log2012.log</span><br><span class="line">-rw-r--r-- 1 root mail     61 11-30 08:39 log2013.log</span><br><span class="line">-rw-r--r-- 1 root mail      0 11-30 08:39 log2014.log</span><br><span class="line">-rw-r--r-- 1 root mail      0 11-30 08:39 log2015.log</span><br><span class="line">-rw-r--r-- 1 root mail      0 11-30 08:39 log2016.log</span><br><span class="line">-rw-r--r-- 1 root mail      0 11-30 08:39 log2017.log</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">[root@localhost test]# ll</div><div class="line">drwxr-xr-x 2 root users   4096 11-30 08:39 test6</div><div class="line">[root@localhost test]# chown -R -v root:mail test6</div><div class="line">“test6/log2014.log” 的所有者已更改为 root:mail</div><div class="line">“test6/linklog.log” 的所有者已更改为 root:mail</div><div class="line">“test6/log2015.log” 的所有者已更改为 root:mail</div><div class="line">“test6/log2013.log” 的所有者已更改为 root:mail</div><div class="line">“test6/log2012.log” 的所有者已保留为 root:mail</div><div class="line">“test6/log2017.log” 的所有者已更改为 root:mail</div><div class="line">“test6/log2016.log” 的所有者已更改为 root:mail</div><div class="line">“test6” 的所有者已更改为 root:mail</div><div class="line">[root@localhost test]# ll</div><div class="line">drwxr-xr-x 2 root mail   4096 11-30 08:39 test6</div><div class="line">[root@localhost test]# cd test6</div><div class="line">[root@localhost test6]# ll</div><div class="line">总计 604</div><div class="line">---xr--r-- 1 root mail 302108 11-30 08:39 linklog.log</div><div class="line">---xr--r-- 1 root mail 302108 11-30 08:39 log2012.log</div><div class="line">-rw-r--r-- 1 root mail     61 11-30 08:39 log2013.log</div><div class="line">-rw-r--r-- 1 root mail      0 11-30 08:39 log2014.log</div><div class="line">-rw-r--r-- 1 root mail      0 11-30 08:39 log2015.log</div><div class="line">-rw-r--r-- 1 root mail      0 11-30 08:39 log2016.log</div><div class="line">-rw-r--r-- 1 root mail      0 11-30 08:39 log2017.log</div></pre></td></tr></table></figure>
 <p>说明：</p>
 
       
@@ -462,11 +462,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
+                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
+                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,10 +475,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,7 +490,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网速</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,34 +527,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读写分离</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网速</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dig</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -562,11 +550,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+                <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">dig</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,11 +566,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">n</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
+                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,11 +578,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">curl</a>
+                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -599,6 +591,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">lsof</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">free</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,7 +610,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">free</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,11 +618,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
+                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,7 +638,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
+                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -650,11 +646,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
+                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
+                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -674,7 +670,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vi</a>
+                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -690,15 +686,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wget</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">work</a>
+                <a href="javascript:void(0)" class="js-tag color3">vi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,11 +714,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">work</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ua</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">n</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,15 +758,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">个人</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -763,6 +771,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">时序图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -800,17 +812,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
-              </li>
             
             <div class="clearfix"></div>
           </ul>
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

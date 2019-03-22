@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.houjiyi.com">
   <title>centos6.7 安装 redis并配置开机启动 | 后记忆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在实际开发中有时候我们生产环境使用的服务器并不是centos7，这样造成我们安装软件需要使用更加通用的方式。  首先安装wget工具，下载redis包，我们在github下载release包，官网地址目前无法访问  12yum install wget -ywget https://github.com/antirez/redis/archive/4.0.2.tar.gz">
-<meta name="keywords" content="redis,centos6.7">
+<meta name="keywords" content="centos6.7,redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos6.7 安装 redis并配置开机启动">
 <meta property="og:url" content="https://www.houjiyi.com/2017/10/10/centos6.7 安装 redis并配置开机启动/index.html">
@@ -42,7 +42,7 @@
   
 
 </head>
-</html>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -182,29 +182,29 @@
         <p>在实际开发中有时候我们生产环境使用的服务器并不是centos7，这样造成我们安装软件需要使用更加通用的方式。</p>
 <ol>
 <li><p>首先安装wget工具，下载redis包，我们在github下载release包，官网地址目前无法访问</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install wget -y</span><br><span class="line">wget https://github.com/antirez/redis/archive/4.0.2.tar.gz</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install wget -y</div><div class="line">wget https://github.com/antirez/redis/archive/4.0.2.tar.gz</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <a id="more"></a>
-<ol start="2">
+<ol>
 <li><p>解压&amp;make&amp;安装</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf 4.0.2.tar.gz </span><br><span class="line">cd redis-4.0.2/</span><br><span class="line">make</span><br><span class="line">cd src &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tar zxvf 4.0.2.tar.gz </div><div class="line">cd redis-4.0.2/</div><div class="line">make</div><div class="line">cd src &amp;&amp; make install</div></pre></td></tr></table></figure>
 <p> <img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/QQ20171010-175039.png" alt="make &amp;&amp; make install"><br> 执行完make install以后，会把redis-cli、redis-server放到/usr/local/bin/下边，由于服务器并没有把这个路径加到环境变量里边，因此我们需要多一步操作</p>
 </li>
 <li><p>修改环境变量，使redis命令生效</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd ~/</span><br><span class="line">vi .bashrc</span><br><span class="line"></span><br><span class="line"># 然后再文件末尾添加如下命令</span><br><span class="line">PATH=$PATH:/usr/local/bin/</span><br><span class="line"></span><br><span class="line">#保存后执行下边命令</span><br><span class="line">source .bashrc</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">cd ~/</div><div class="line">vi .bashrc</div><div class="line"></div><div class="line"># 然后再文件末尾添加如下命令</div><div class="line">PATH=$PATH:/usr/local/bin/</div><div class="line"></div><div class="line">#保存后执行下边命令</div><div class="line">source .bashrc</div></pre></td></tr></table></figure>
 <p> <img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/QQ20171010-175531.png" alt="修改环境变量"></p>
 </li>
 <li><p>复制配置文件到/etc 目录下</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ~/redis-4.0.2/redis.conf /etc/</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp ~/redis-4.0.2/redis.conf /etc/</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<ol start="5">
+<ol>
 <li><p>建立用户与日志目录，建议为Redis单独建立一个用户，并新建data和日志文件夹</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo useradd redis  </span><br><span class="line">sudo mkdir -p /var/lib/redis  </span><br><span class="line">sudo mkdir -p /var/log/redis  </span><br><span class="line">sudo chown redis.redis /var/lib/redis  </span><br><span class="line">sudo chown redis.redis /var/log/redis</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo useradd redis  </div><div class="line">sudo mkdir -p /var/lib/redis  </div><div class="line">sudo mkdir -p /var/log/redis  </div><div class="line">sudo chown redis.redis /var/lib/redis  </div><div class="line">sudo chown redis.redis /var/log/redis</div></pre></td></tr></table></figure>
 </li>
 <li><p>修改配置文件</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/redis.conf</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/redis.conf</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <pre><code>修改绑定IP，让本机之外的IP也能够访问redis bind 0.0.0.0
@@ -215,28 +215,28 @@
 
 修改数据文件存储位置 dir /var/lib/redis
 ![](http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/QQ20171010-180751.png)
-</code></pre><ol start="7">
+</code></pre><ol>
 <li><p>配置init脚本</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/init.d/redis</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/init.d/redis</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"># chkconfig:   2345 90 10  </span><br><span class="line"> </span><br><span class="line"># description:  Redis is a persistent key-value database  </span><br><span class="line">  </span><br><span class="line">###########################  </span><br><span class="line">PATH=/usr/local/bin:/sbin:/usr/bin:/bin  </span><br><span class="line">     </span><br><span class="line">REDISPORT=6379  </span><br><span class="line">EXEC=/usr/local/bin/redis-server  </span><br><span class="line">REDIS_CLI=/usr/local/bin/redis-cli  </span><br><span class="line">     </span><br><span class="line">PIDFILE=/var/run/redis.pid  </span><br><span class="line">CONF=&quot;/etc/redis.conf&quot;  </span><br><span class="line">     </span><br><span class="line">case &quot;$1&quot; in  </span><br><span class="line">    start)  </span><br><span class="line">        if [ -f $PIDFILE ]  </span><br><span class="line">        then  </span><br><span class="line">                echo &quot;$PIDFILE exists, process is already running or crashed&quot;  </span><br><span class="line">        else  </span><br><span class="line">                echo &quot;Starting Redis server...&quot;  </span><br><span class="line">                $EXEC $CONF  </span><br><span class="line">        fi  </span><br><span class="line">        if [ &quot;$?&quot;=&quot;0&quot; ]   </span><br><span class="line">        then  </span><br><span class="line">              echo &quot;Redis is running...&quot;  </span><br><span class="line">        fi  </span><br><span class="line">        ;;  </span><br><span class="line">    stop)  </span><br><span class="line">        if [ ! -f $PIDFILE ]  </span><br><span class="line">        then  </span><br><span class="line">                echo &quot;$PIDFILE does not exist, process is not running&quot;  </span><br><span class="line">        else  </span><br><span class="line">                PID=$(cat $PIDFILE)  </span><br><span class="line">                echo &quot;Stopping ...&quot;  </span><br><span class="line">                $REDIS_CLI -p $REDISPORT SHUTDOWN  </span><br><span class="line">                while [ -x $&#123;PIDFILE&#125; ]  </span><br><span class="line">               do  </span><br><span class="line">                    echo &quot;Waiting for Redis to shutdown ...&quot;  </span><br><span class="line">                    sleep 1  </span><br><span class="line">                done  </span><br><span class="line">                echo &quot;Redis stopped&quot;  </span><br><span class="line">        fi  </span><br><span class="line">        ;;  </span><br><span class="line">   restart|force-reload)  </span><br><span class="line">        $&#123;0&#125; stop  </span><br><span class="line">        $&#123;0&#125; start  </span><br><span class="line">        ;;  </span><br><span class="line">  *)  </span><br><span class="line">    echo &quot;Usage: /etc/init.d/redis &#123;start|stop|restart|force-reload&#125;&quot; &gt;&amp;2  </span><br><span class="line">        exit 1  </span><br><span class="line">esac  </span><br><span class="line">##############################</span><br></pre></td></tr></table></figure>
-</code></pre><ol start="8">
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"># chkconfig:   2345 90 10  </div><div class="line"> </div><div class="line"># description:  Redis is a persistent key-value database  </div><div class="line">  </div><div class="line">###########################  </div><div class="line">PATH=/usr/local/bin:/sbin:/usr/bin:/bin  </div><div class="line">     </div><div class="line">REDISPORT=6379  </div><div class="line">EXEC=/usr/local/bin/redis-server  </div><div class="line">REDIS_CLI=/usr/local/bin/redis-cli  </div><div class="line">     </div><div class="line">PIDFILE=/var/run/redis.pid  </div><div class="line">CONF=&quot;/etc/redis.conf&quot;  </div><div class="line">     </div><div class="line">case &quot;$1&quot; in  </div><div class="line">    start)  </div><div class="line">        if [ -f $PIDFILE ]  </div><div class="line">        then  </div><div class="line">                echo &quot;$PIDFILE exists, process is already running or crashed&quot;  </div><div class="line">        else  </div><div class="line">                echo &quot;Starting Redis server...&quot;  </div><div class="line">                $EXEC $CONF  </div><div class="line">        fi  </div><div class="line">        if [ &quot;$?&quot;=&quot;0&quot; ]   </div><div class="line">        then  </div><div class="line">              echo &quot;Redis is running...&quot;  </div><div class="line">        fi  </div><div class="line">        ;;  </div><div class="line">    stop)  </div><div class="line">        if [ ! -f $PIDFILE ]  </div><div class="line">        then  </div><div class="line">                echo &quot;$PIDFILE does not exist, process is not running&quot;  </div><div class="line">        else  </div><div class="line">                PID=$(cat $PIDFILE)  </div><div class="line">                echo &quot;Stopping ...&quot;  </div><div class="line">                $REDIS_CLI -p $REDISPORT SHUTDOWN  </div><div class="line">                while [ -x $&#123;PIDFILE&#125; ]  </div><div class="line">               do  </div><div class="line">                    echo &quot;Waiting for Redis to shutdown ...&quot;  </div><div class="line">                    sleep 1  </div><div class="line">                done  </div><div class="line">                echo &quot;Redis stopped&quot;  </div><div class="line">        fi  </div><div class="line">        ;;  </div><div class="line">   restart|force-reload)  </div><div class="line">        $&#123;0&#125; stop  </div><div class="line">        $&#123;0&#125; start  </div><div class="line">        ;;  </div><div class="line">  *)  </div><div class="line">    echo &quot;Usage: /etc/init.d/redis &#123;start|stop|restart|force-reload&#125;&quot; &gt;&amp;2  </div><div class="line">        exit 1  </div><div class="line">esac  </div><div class="line">##############################</div></pre></td></tr></table></figure>
+</code></pre><ol>
 <li><p>添加执行权限</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /etc/init.d/redis</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x /etc/init.d/redis</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<ol start="9">
+<ol>
 <li><p>设定开机启动服务</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chkconfig redis on</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chkconfig redis on</div></pre></td></tr></table></figure>
 </li>
 <li><p>启动，停止redis</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service redis start    </span><br><span class="line">service redis stop</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service redis start    </div><div class="line">service redis stop</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<ol start="11">
+<ol>
 <li><p>测试redis</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redis-cli</div></pre></td></tr></table></figure>
 </li>
 <li><p>通过rdm连接</p>
 <p><img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/QQ20171010-183804@2x.png" alt="通过rdm连接"></p>
@@ -255,11 +255,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">centos6.7</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">centos6.7</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
         		</li>
       		
 		</ul>
@@ -480,11 +480,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
+                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
+                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,10 +493,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -512,7 +508,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网速</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,34 +545,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读写分离</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网速</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dig</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,11 +568,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+                <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">dig</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,11 +584,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">n</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
+                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,11 +596,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">curl</a>
+                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,6 +609,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">lsof</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">free</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,7 +628,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">free</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,11 +636,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
+                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,7 +656,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
+                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -668,11 +664,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
+                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
+                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -692,7 +688,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vi</a>
+                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -708,15 +704,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wget</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">work</a>
+                <a href="javascript:void(0)" class="js-tag color3">vi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -744,11 +732,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">work</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ua</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">n</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -760,15 +776,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">个人</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -781,6 +789,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">时序图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -818,17 +830,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
-              </li>
             
             <div class="clearfix"></div>
           </ul>
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

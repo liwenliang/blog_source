@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.houjiyi.com">
   <title>Let&#39;s Encrypt：用免费的 SSL 证书，让网站支持 HTTPS | 后记忆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -38,7 +38,7 @@
   
 
 </head>
-</html>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -177,41 +177,41 @@
       
         <p>申请 Let’s Encrypt 提供的免费 SSL 证书，配置网站使用 HTTPS，让网站应用更安全。<br>直接在运行网站的服务器上去申请 SSL 证书更方便一些，你也可以在一台服务器上去为在<br>其它服务器上运行的网站申请 SSL 证书，这需要做额外的验证。操作都非常简单，不用紧张：）<br><a id="more"></a><br>我在一台 CentOS  7 服务器上申请了 Let’s Encrypt 签发的 SSL 证书，我的网站的 Web 服务器用的是 Nginx。</p>
 <h2 id="安装EPEL仓库"><a href="#安装EPEL仓库" class="headerlink" title="安装EPEL仓库"></a>安装EPEL仓库</h2><p>在 CentOS 的 EPEL 仓库里可以找到签发 Let’s Encrypt 证书用的工具。所以先安装一下这个仓库，执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install epel-release -y</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install epel-release -y</div></pre></td></tr></table></figure>
 <p>公司内网不能用，可以在本地虚拟机安装，然后通过下边的『为其他服务器申请证书的流程走』</p>
 <h2 id="安装签发证书工具"><a href="#安装签发证书工具" class="headerlink" title="安装签发证书工具"></a>安装签发证书工具</h2><p>用 Certbot 工具申请 Let’s Encrypt 证书，先安装一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install certbot-nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install certbot-nginx</div></pre></td></tr></table></figure>
 <p>运行 certbot 工具时报错：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImportError: No module named &apos;requests.packages.urllib3&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ImportError: No module named &apos;requests.packages.urllib3&apos;</div></pre></td></tr></table></figure>
 <p>执行下面的命令解决了上面的问题：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade --force-reinstall &apos;requests==2.6.0&apos; urllib3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install --upgrade --force-reinstall &apos;requests==2.6.0&apos; urllib3</div></pre></td></tr></table></figure>
 <h2 id="申请证书"><a href="#申请证书" class="headerlink" title="申请证书"></a>申请证书</h2><h3 id="网站运行在申请-SSL-证书用的服务器上"><a href="#网站运行在申请-SSL-证书用的服务器上" class="headerlink" title="网站运行在申请 SSL 证书用的服务器上"></a>网站运行在申请 SSL 证书用的服务器上</h3><p>你要申请 SSL 证书的主机名已经指向了申请用的服务器的 IP 地址，<br>在服务器上用的是 Nginx Web 服务器。保证 Nginx 正在运行，并<br>且已经配置好了 Nginx ，绑定上了要申请 SSL 证书的主机名。就是<br>你应该在 Nginx 的配置里面，有一个配置是为要申请 SSL 证书的主<br>机名准备的。</p>
 <p>一开始我们在服务器上安装的 Certbot 可以自动修改指定主机名的<br> Nginx 配置，为主机名申请证书，下载证书，并且会自动修改 Nginx<br> 的配置，让它支持 HTTPS。</p>
 <p>执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo certbot --nginx</div></pre></td></tr></table></figure>
 <p>Certbot 会自动查找当前服务器上的 Nginx 里面的虚拟主机。提示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Saving debug log to /var/log/letsencrypt/letsencrypt.log</span><br><span class="line">Plugins selected: Authenticator nginx, Installer nginx</span><br><span class="line">Starting new HTTPS connection (1): acme-v01.api.letsencrypt.org</span><br><span class="line"></span><br><span class="line">Which names would you like to activate HTTPS for?</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">1: houjiyi.com</span><br><span class="line">2: galary.houjiyi.com</span><br><span class="line">3: www.houjiyi.com</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">Select the appropriate numbers separated by commas and/or spaces, or leave input</span><br><span class="line">blank to select all options shown (Enter &apos;c&apos; to cancel):</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Saving debug log to /var/log/letsencrypt/letsencrypt.log</div><div class="line">Plugins selected: Authenticator nginx, Installer nginx</div><div class="line">Starting new HTTPS connection (1): acme-v01.api.letsencrypt.org</div><div class="line"></div><div class="line">Which names would you like to activate HTTPS for?</div><div class="line">-------------------------------------------------------------------------------</div><div class="line">1: houjiyi.com</div><div class="line">2: galary.houjiyi.com</div><div class="line">3: www.houjiyi.com</div><div class="line">-------------------------------------------------------------------------------</div><div class="line">Select the appropriate numbers separated by commas and/or spaces, or leave input</div><div class="line">blank to select all options shown (Enter &apos;c&apos; to cancel):</div></pre></td></tr></table></figure>
 <p>比如我的服务器上有两个 Nginx 虚拟主机，上面会提示想给哪个主机名申请 SSL 证书，输入序号选择，<br>或留为空白直接回车选择所有。验证成功，Let’s Encrypt 就会立即给你签发 SSL 证书，并且会自动<br>修改主机的 Nginx 配置，让它支持 HTTPS。过程中会提示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Obtaining a new certificate</span><br><span class="line">Performing the following challenges:</span><br><span class="line">tls-sni-01 challenge for houjiyi.com</span><br><span class="line">Waiting for verification...</span><br><span class="line">Cleaning up challenges</span><br><span class="line">Deployed Certificate to VirtualHost /etc/nginx/conf.d/www.conf for set([&apos;houjiyi.com&apos;])</span><br><span class="line"></span><br><span class="line">Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">1: No redirect - Make no further changes to the webserver configuration.</span><br><span class="line">2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for</span><br><span class="line">new sites, or if you&apos;re confident your site works on HTTPS. You can undo this</span><br><span class="line">change by editing your web server&apos;s configuration.</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">Select the appropriate number [1-2] then [enter] (press &apos;c&apos; to cancel):</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Obtaining a new certificate</div><div class="line">Performing the following challenges:</div><div class="line">tls-sni-01 challenge for houjiyi.com</div><div class="line">Waiting for verification...</div><div class="line">Cleaning up challenges</div><div class="line">Deployed Certificate to VirtualHost /etc/nginx/conf.d/www.conf for set([&apos;houjiyi.com&apos;])</div><div class="line"></div><div class="line">Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.</div><div class="line">-------------------------------------------------------------------------------</div><div class="line">1: No redirect - Make no further changes to the webserver configuration.</div><div class="line">2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for</div><div class="line">new sites, or if you&apos;re confident your site works on HTTPS. You can undo this</div><div class="line">change by editing your web server&apos;s configuration.</div><div class="line">-------------------------------------------------------------------------------</div><div class="line">Select the appropriate number [1-2] then [enter] (press &apos;c&apos; to cancel):</div></pre></td></tr></table></figure>
 <p>意思是，想不想把 HTTP 的请求重定向到 HTTPS ，如果选择 Redirect，Certbot 会自动在主机的 Nginx 配置里添加重定向用的配置。成功以后会提示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">The appropriate server block is already redirecting traffic. To enable redirect anyway, uncomment the redirect lines in /etc/nginx/conf.d/www.conf.</span><br><span class="line"></span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">Congratulations! You have successfully enabled https://houjiyi.com</span><br><span class="line"></span><br><span class="line">You should test your configuration at:</span><br><span class="line">https://www.ssllabs.com/ssltest/analyze.html?d=houjiyi.com</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - Congratulations! Your certificate and chain have been saved at:</span><br><span class="line">   /etc/letsencrypt/live/houjiyi.com/fullchain.pem</span><br><span class="line">   Your key file has been saved at:</span><br><span class="line">   /etc/letsencrypt/live/houjiyi.com/privkey.pem</span><br><span class="line">   Your cert will expire on 2018-04-02. To obtain a new or tweaked</span><br><span class="line">   version of this certificate in the future, simply run certbot again</span><br><span class="line">   with the &quot;certonly&quot; option. To non-interactively renew *all* of</span><br><span class="line">   your certificates, run &quot;certbot renew&quot;</span><br><span class="line"> - If you like Certbot, please consider supporting our work by:</span><br><span class="line"></span><br><span class="line">   Donating to ISRG / Let&apos;s Encrypt:   https://letsencrypt.org/donate</span><br><span class="line">   Donating to EFF:                    https://eff.org/donate-le</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">The appropriate server block is already redirecting traffic. To enable redirect anyway, uncomment the redirect lines in /etc/nginx/conf.d/www.conf.</div><div class="line"></div><div class="line">-------------------------------------------------------------------------------</div><div class="line">Congratulations! You have successfully enabled https://houjiyi.com</div><div class="line"></div><div class="line">You should test your configuration at:</div><div class="line">https://www.ssllabs.com/ssltest/analyze.html?d=houjiyi.com</div><div class="line">-------------------------------------------------------------------------------</div><div class="line"></div><div class="line">IMPORTANT NOTES:</div><div class="line"> - Congratulations! Your certificate and chain have been saved at:</div><div class="line">   /etc/letsencrypt/live/houjiyi.com/fullchain.pem</div><div class="line">   Your key file has been saved at:</div><div class="line">   /etc/letsencrypt/live/houjiyi.com/privkey.pem</div><div class="line">   Your cert will expire on 2018-04-02. To obtain a new or tweaked</div><div class="line">   version of this certificate in the future, simply run certbot again</div><div class="line">   with the &quot;certonly&quot; option. To non-interactively renew *all* of</div><div class="line">   your certificates, run &quot;certbot renew&quot;</div><div class="line"> - If you like Certbot, please consider supporting our work by:</div><div class="line"></div><div class="line">   Donating to ISRG / Let&apos;s Encrypt:   https://letsencrypt.org/donate</div><div class="line">   Donating to EFF:                    https://eff.org/donate-le</div></pre></td></tr></table></figure>
 <p>上面会告诉你申请的 Let’s Encrypt 证书保存的位置，一般是在：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/letsencrypt/live/主机名</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/letsencrypt/live/主机名</div></pre></td></tr></table></figure>
 <p>再打开网站的 Nginx 配置检查一下，配置里会有一些东西是 Certbot 自动添加的，配置的后面都会有注释 managed by Certbot：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen        80;</span><br><span class="line">    server_name   houjiyi.com;</span><br><span class="line"></span><br><span class="line">    listen 443 ssl;</span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/houjiyi.com/fullchain.pem;</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/houjiyi.com/privkey.pem;</span><br><span class="line">    include /etc/letsencrypt/options-ssl-nginx.conf;</span><br><span class="line">    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    if ($scheme = &quot;https&quot;) &#123;</span><br><span class="line">        return 301 https://www.$host$request_uri;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen        80;</div><div class="line">    server_name   houjiyi.com;</div><div class="line"></div><div class="line">    listen 443 ssl;</div><div class="line">    ssl_certificate /etc/letsencrypt/live/houjiyi.com/fullchain.pem;</div><div class="line">    ssl_certificate_key /etc/letsencrypt/live/houjiyi.com/privkey.pem;</div><div class="line">    include /etc/letsencrypt/options-ssl-nginx.conf;</div><div class="line">    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;</div><div class="line"></div><div class="line"></div><div class="line">    if ($scheme = &quot;https&quot;) &#123;</div><div class="line">        return 301 https://www.$host$request_uri;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>如果你只想为跟 Nginx 绑定的主机名申请证书，不想让 Certbot 修改 Nginx 的配置，可以执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx certonly</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo certbot --nginx certonly</div></pre></td></tr></table></figure>
 <h3 id="网站运行在申请-SSL-证书以外的服务器上"><a href="#网站运行在申请-SSL-证书以外的服务器上" class="headerlink" title="网站运行在申请 SSL 证书以外的服务器上"></a>网站运行在申请 SSL 证书以外的服务器上</h3><p>我们在一个 CentOS 服务器上，也可以为运行在其它服务器上的网站申请 Let’s Encrypt 证书，只需要多做一步验证。</p>
 <p>执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot certonly --manual</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo certbot certonly --manual</div></pre></td></tr></table></figure>
 <p>提示让你输入想要申请证书的主机名：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Saving debug log to /var/log/letsencrypt/letsencrypt.log</span><br><span class="line">Plugins selected: Authenticator manual, Installer None</span><br><span class="line">Starting new HTTPS connection (1): acme-v01.api.letsencrypt.org</span><br><span class="line">Please enter in your domain name(s) (comma and/or space separated)  (Enter &apos;c&apos;</span><br><span class="line">to cancel): t2.m.le.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Saving debug log to /var/log/letsencrypt/letsencrypt.log</div><div class="line">Plugins selected: Authenticator manual, Installer None</div><div class="line">Starting new HTTPS connection (1): acme-v01.api.letsencrypt.org</div><div class="line">Please enter in your domain name(s) (comma and/or space separated)  (Enter &apos;c&apos;</div><div class="line">to cancel): t2.m.le.com</div></pre></td></tr></table></figure>
 <p>继续又会提示要记录服务器的 IP 地址，是不是同意这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Obtaining a new certificate</span><br><span class="line">Performing the following challenges:</span><br><span class="line">http-01 challenge for t2.m.le.com</span><br><span class="line"></span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">NOTE: The IP of this machine will be publicly logged as having requested this</span><br><span class="line">certificate. If you&apos;re running certbot in manual mode on a machine that is not</span><br><span class="line">your server, please ensure you&apos;re okay with that.</span><br><span class="line"></span><br><span class="line">Are you OK with your IP being logged?</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">(Y)es/(N)o: Y</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Obtaining a new certificate</div><div class="line">Performing the following challenges:</div><div class="line">http-01 challenge for t2.m.le.com</div><div class="line"></div><div class="line">-------------------------------------------------------------------------------</div><div class="line">NOTE: The IP of this machine will be publicly logged as having requested this</div><div class="line">certificate. If you&apos;re running certbot in manual mode on a machine that is not</div><div class="line">your server, please ensure you&apos;re okay with that.</div><div class="line"></div><div class="line">Are you OK with your IP being logged?</div><div class="line">-------------------------------------------------------------------------------</div><div class="line">(Y)es/(N)o: Y</div></pre></td></tr></table></figure>
 <p>下面要做一步验证，把一串字符放在指定的文件里，而且要用指定的路径可以访问到这个文件，这样就可以完成验证了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Create a file containing just this data:</span><br><span class="line"></span><br><span class="line">KIad2acPdKiF5pLpjlv4fK19PJDchhO7ClJZI_P3zbw.dfvuyqod4KGCve8xM-wotdjimoIXlfb6a4dkaSFN7LI</span><br><span class="line"></span><br><span class="line">And make it available on your web server at this URL:</span><br><span class="line"></span><br><span class="line">http://t2.m.le.com/.well-known/acme-challenge/KIad2acPdKiF5pLpjlv4fK19PJDchhO7ClJZI_P3zbw</span><br><span class="line"></span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">Press Enter to Continue</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Create a file containing just this data:</div><div class="line"></div><div class="line">KIad2acPdKiF5pLpjlv4fK19PJDchhO7ClJZI_P3zbw.dfvuyqod4KGCve8xM-wotdjimoIXlfb6a4dkaSFN7LI</div><div class="line"></div><div class="line">And make it available on your web server at this URL:</div><div class="line"></div><div class="line">http://t2.m.le.com/.well-known/acme-challenge/KIad2acPdKiF5pLpjlv4fK19PJDchhO7ClJZI_P3zbw</div><div class="line"></div><div class="line">-------------------------------------------------------------------------------</div><div class="line">Press Enter to Continue</div></pre></td></tr></table></figure>
 <p>一切正常，验证通过就会签发证书：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Waiting for verification...</span><br><span class="line">Cleaning up challenges</span><br><span class="line"></span><br><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - Congratulations! Your certificate and chain have been saved at:</span><br><span class="line">   /etc/letsencrypt/live/t2.m.le.com/fullchain.pem</span><br><span class="line">   Your key file has been saved at:</span><br><span class="line">   /etc/letsencrypt/live/t2.m.le.com/privkey.pem</span><br><span class="line">   Your cert will expire on 2018-03-12. To obtain a new or tweaked</span><br><span class="line">   version of this certificate in the future, simply run certbot</span><br><span class="line">   again. To non-interactively renew *all* of your certificates, run</span><br><span class="line">   &quot;certbot renew&quot;</span><br><span class="line"> - If you like Certbot, please consider supporting our work by:</span><br><span class="line"></span><br><span class="line">   Donating to ISRG / Let&apos;s Encrypt:   https://letsencrypt.org/donate</span><br><span class="line">   Donating to EFF:                    https://eff.org/donate-le</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Waiting for verification...</div><div class="line">Cleaning up challenges</div><div class="line"></div><div class="line">IMPORTANT NOTES:</div><div class="line"> - Congratulations! Your certificate and chain have been saved at:</div><div class="line">   /etc/letsencrypt/live/t2.m.le.com/fullchain.pem</div><div class="line">   Your key file has been saved at:</div><div class="line">   /etc/letsencrypt/live/t2.m.le.com/privkey.pem</div><div class="line">   Your cert will expire on 2018-03-12. To obtain a new or tweaked</div><div class="line">   version of this certificate in the future, simply run certbot</div><div class="line">   again. To non-interactively renew *all* of your certificates, run</div><div class="line">   &quot;certbot renew&quot;</div><div class="line"> - If you like Certbot, please consider supporting our work by:</div><div class="line"></div><div class="line">   Donating to ISRG / Let&apos;s Encrypt:   https://letsencrypt.org/donate</div><div class="line">   Donating to EFF:                    https://eff.org/donate-le</div></pre></td></tr></table></figure>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>阿里云申请的免费的赛门铁克的证书有效期是一年，同时赛门铁克证书在以后的chrome版本可能不被信任，<br>因此换一个证书。这个证书有效期为3个月，到期后操作一遍即可。</p>
 
       
@@ -455,11 +455,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
+                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
+                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,10 +468,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -487,7 +483,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网速</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,34 +520,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读写分离</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网速</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dig</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,11 +543,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+                <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">dig</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,11 +559,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">n</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
+                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,11 +571,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">curl</a>
+                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,6 +584,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">lsof</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">free</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,7 +603,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">free</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -615,11 +611,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
+                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -635,7 +631,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
+                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,11 +639,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
+                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
+                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -667,7 +663,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vi</a>
+                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -683,15 +679,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wget</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">work</a>
+                <a href="javascript:void(0)" class="js-tag color3">vi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -719,11 +707,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">work</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ua</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">n</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -735,15 +751,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">个人</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -756,6 +764,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">时序图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -793,17 +805,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
-              </li>
             
             <div class="clearfix"></div>
           </ul>
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

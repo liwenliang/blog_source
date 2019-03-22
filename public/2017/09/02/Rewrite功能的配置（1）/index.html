@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.houjiyi.com">
   <title>Rewrite功能的配置（1） | 后记忆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -40,7 +40,7 @@
   
 
 </head>
-</html>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -182,10 +182,10 @@
 <a id="more"></a>
 <p>适当利用Rewrite功能，可以给我们带来很多好处，这一节我们就重点学习一下 Nginx 服务器的Rewrite功能。Nginx服务器的Rewrite功能的实现依赖于PCRE（Perl Compatible Regular Expressions，Perl兼容的正则表达式）的支持，因此在编译安装Nginx服务器之前，需要安装PCRE库。</p>
 <blockquote>
-<p>提示：有关PCRE的介绍和PCRE库的相关下载请参阅其<a href="http://www.pcre.org/" target="_blank" rel="noopener">官方网站</a>。<br>Nginx服务器使用ngx_http_rewrite_module模块解析和处理Rewrite功能的相关配置。</p>
+<p>提示：有关PCRE的介绍和PCRE库的相关下载请参阅其<a href="http://www.pcre.org/" target="_blank" rel="external">官方网站</a>。<br>Nginx服务器使用ngx_http_rewrite_module模块解析和处理Rewrite功能的相关配置。</p>
 </blockquote>
 <h2 id="『地址重写』与『地址转发』"><a href="#『地址重写』与『地址转发』" class="headerlink" title="『地址重写』与『地址转发』"></a>『地址重写』与『地址转发』</h2><p>『地址重写』与『转发』在计算机网络领域是两个重要概念，经常被大家提起。但许多人对这两个概念的区别不清楚，甚至混为一谈。在学习Nginx服务器的Rewrite功能之前，我们有必要先将这对概念进行一下分析和对比，让大家能够有一个清晰的认识。</p>
-<p>『地址重写』，实际上是为了实现地址标准化。那么，什么是地址标准化呢？我们来举一个例子。比如在访问Google首页的时候，我们在地址栏中可以输入<a href="http://www.google.com，也可以输入google.cn，他们都能够准确的指向Google首页，从客户端来看，Google首页同时对应了两个地址，实际上，Google服务器是在不同的地址中选择了确定的一个，即www.google.com，进而返回服务器响应的。这个过程就是地址标准化的过程。google.cn这个地址在服务器中被改变为www.google.com的过程就是地址重定向的过程。" target="_blank" rel="noopener">www.google.com，也可以输入google.cn，他们都能够准确的指向Google首页，从客户端来看，Google首页同时对应了两个地址，实际上，Google服务器是在不同的地址中选择了确定的一个，即www.google.com，进而返回服务器响应的。这个过程就是地址标准化的过程。google.cn这个地址在服务器中被改变为www.google.com的过程就是地址重定向的过程。</a></p>
+<p>『地址重写』，实际上是为了实现地址标准化。那么，什么是地址标准化呢？我们来举一个例子。比如在访问Google首页的时候，我们在地址栏中可以输入www.google.com，也可以输入google.cn，他们都能够准确的指向Google首页，从客户端来看，Google首页同时对应了两个地址，实际上，Google服务器是在不同的地址中选择了确定的一个，即www.google.com，进而返回服务器响应的。这个过程就是地址标准化的过程。google.cn这个地址在服务器中被改变为www.google.com的过程就是地址重定向的过程。</p>
 <p>『转发』的概念最初和网页的访问并没有太大关系，他是指在网络数据传输过程中数据分组到达路由器或者桥接器后该设备通过检查分组地址并将数据转到相邻局域网上的过程。后来该概念被用在网页访问中，出现了『地址转发』的说法。『地址转发』是指将一个域名知道另一个已有站点的过程。</p>
 <p>从上面的解释，我们可以看到『地址重写』和『地址转发』代表的两个过程是不同的。我们可以总结这两个过程的几点区别：</p>
 <blockquote>
@@ -197,38 +197,38 @@
 <p>由于正则表达式的知识超出了本书的范围，我们不在正文中对其详细阐述。在『附录A』中，笔者为大家整理了PCRE库支持的正则表达式元字符表，并对这些元字符在正则表达式上下文中的行为进行了说明，同时也列举了大量的使用实例供大家参考。</p>
 <p>在这里，建议大家学习正则表达式时，一定要将思维从『字符创』的概念转变为『字符』的概念，将『词句』的概念转变为『字』的概念，多结合实例进行操作，这样才能准确理解和运用正则表达式。另外，网络上有不少PCRE正则表达式的测试工具，大家可以搜索下载，这些工具对我们在学习和使用正则表达式的过程中很有帮助。</p>
 <p>在Nginx配置中，有关Rewrite的配置指令不多，但是它们已经能够提供比较完善的功能了。</p>
-<h3 id="if指令"><a href="#if指令" class="headerlink" title="if指令"></a>if指令</h3><p>该指令用来支持条件判断，并根据条件判断结果选择不同的Nginx配置，可以在server块或location块中配置该指令，其语法结构为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if ( condition ) &#123;...&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="if指令"><a href="#if指令" class="headerlink" title="if指令"></a>if指令</h3><p>该指令用来支持条件判断，并根据条件判断结果选择不同的Nginx配置，可以在server块或location块中配置该指令，其语法结构为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if ( condition ) &#123;...&#125;</div></pre></td></tr></table></figure></p>
 <p>其中，花括号代表一个作用域，形成一个if配置块，是条件为真时的Nginx配置。condition为判断条件（true、false），他可以支持以下几种设置方法：</p>
 <h4 id="变量名。"><a href="#变量名。" class="headerlink" title="变量名。"></a>变量名。</h4><p>如果变量的值为空字符串或以『0』开头的任意字符串，if指令认为条件为false，其他情况认为条件为true。比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if ($slow) &#123;</span><br><span class="line">  ... #Nginx 配置</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if ($slow) &#123;</div><div class="line">  ... #Nginx 配置</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="使用’-’（等于）和’-’（不等于）"><a href="#使用’-’（等于）和’-’（不等于）" class="headerlink" title="使用’=’（等于）和’!=’（不等于）"></a>使用’=’（等于）和’!=’（不等于）</h4><p>比较变量和字符串是否相等，相等时if指令为true，反之为false。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if ($request_method = POST) &#123;</span><br><span class="line">	return 405;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if ($request_method = POST) &#123;</div><div class="line">	return 405;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>注意：这里的字符串不需要加引号。</p>
 </blockquote>
 <h4 id="使用正则表达式对变量进行匹配"><a href="#使用正则表达式对变量进行匹配" class="headerlink" title="使用正则表达式对变量进行匹配"></a>使用正则表达式对变量进行匹配</h4><p>匹配成功时 if 指令认为条件为true，否则为false。变量与正则表达式之间用”~”、”~<em>“、”!~”或”!~\</em>“连接，『~』表示匹配过程中对大小写敏感，『~*』表示匹配过程中对大小写不敏感；使用『!~』和”!~*“，匹配失败时if指令认为条件为true，否则为false。在正则表达式中，可以使用小括号对变量值进行截取，在花括号中使用$1…$9引用截取的值。比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if ($http_user_agent ~ MSIE) &#123;</span><br><span class="line">	# $http_user_agent的值中是否包含有MSIE字符串，如果包含，为true</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if ($http_user_agent ~ MSIE) &#123;</div><div class="line">	# $http_user_agent的值中是否包含有MSIE字符串，如果包含，为true</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>注意：整个正则表达式字符串一般不需要加引号，但如果含有右花括号”}”或者分号”;”字符时，必须要给整个正则表达式添加引号。</p>
 </blockquote>
 <h4 id="判断请求的文件是否存在使用”-f”和”-f”。"><a href="#判断请求的文件是否存在使用”-f”和”-f”。" class="headerlink" title="判断请求的文件是否存在使用”-f”和”!-f”。"></a>判断请求的文件是否存在使用”-f”和”!-f”。</h4><p>当使用”-f”时，如果请求的文件存在，if指令认为条件为true，如果请求的文件不存在为false；使用”!-f”时，如果请求的文件不存在但该文件所在的目录存在，if指令认为条件为true，如果该文件和她所在的目录都不存在，则为false，如果请求的文件存在，也为false。使用的方法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if (-f $request_filename) &#123;</span><br><span class="line">	# 判断请求的文件是否存在</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line">if (!-f $request_filename) &#123;</span><br><span class="line">	# 判断请求的文件是否不存在</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if (-f $request_filename) &#123;</div><div class="line">	# 判断请求的文件是否存在</div><div class="line">	...</div><div class="line">&#125;</div><div class="line">if (!-f $request_filename) &#123;</div><div class="line">	# 判断请求的文件是否不存在</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="判断请求的目录是否存在使用”-d”和”-d”"><a href="#判断请求的目录是否存在使用”-d”和”-d”" class="headerlink" title="判断请求的目录是否存在使用”-d”和”!-d”."></a>判断请求的目录是否存在使用”-d”和”!-d”.</h4><p>当使用”-d”时，如果请求的目录存在，if指令认为条件为true，如果请求的目录不存在，则为false；当使用”!-d”时，如果请求的目录不存在但该目录的上级目录存在，if指令认为条件为true，如果该目录和它的上级目录都不存在，则为false，如果请求的目录存在，也为false。使用方式见”-f”和”!-f”的使用。</p>
 <h4 id="判断请求的目录或文件是否存在使用”-e”和”-e”。"><a href="#判断请求的目录或文件是否存在使用”-e”和”-e”。" class="headerlink" title="判断请求的目录或文件是否存在使用”-e”和”!-e”。"></a>判断请求的目录或文件是否存在使用”-e”和”!-e”。</h4><p>当使用”-e”时，如果请求的目录或者文件存在时，if指令认为条件为true，否则为false。当使用”!-e”时，如果请求的文件和该文件所在路径上的目录都不存在，为true，否则为false。使用方式见”-f”和”!-f”的使用。</p>
 <h4 id="判断请求的文件是否可执行使用”-x”和”-x”。"><a href="#判断请求的文件是否可执行使用”-x”和”-x”。" class="headerlink" title="判断请求的文件是否可执行使用”-x”和”!-x”。"></a>判断请求的文件是否可执行使用”-x”和”!-x”。</h4><p>当使用”-x”时，如果请求的文件可执行，if指令认为条件为true，否则为false；当使用”!-x”时，如果请求的文件不可执行，为true，否则为false。使用方法见”-f”和”!-f”的使用</p>
 <h3 id="break指令"><a href="#break指令" class="headerlink" title="break指令"></a>break指令</h3><p>该指令用于中断当前相同作用域中的其他Nginx配置。与该指令处于同一作用域的Nginx配置中，位于它前面的指令配置生效，位于后面的指令配置无效。Nginx服务器在根据配置处理请求的过程中遇到该指令时，回到上一层作用域继续向下读取配置。该指令可以在server块和location快以及if块中使用，其语法结构为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">break;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">break;</div></pre></td></tr></table></figure>
 <p>我们通过一个例子加深理解：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">	if ($slow) &#123;</span><br><span class="line">		set $id $1;			#处于break指令之前，配置有效</span><br><span class="line">		break;</span><br><span class="line">		limit_rate 10k;		#处于break指令之后，配置无效</span><br><span class="line">	&#125;</span><br><span class="line">	...							#其他Nginx配置，处于break指令所在作用域的上一层作用域，配置有效</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">location / &#123;</div><div class="line">	if ($slow) &#123;</div><div class="line">		set $id $1;			#处于break指令之前，配置有效</div><div class="line">		break;</div><div class="line">		limit_rate 10k;		#处于break指令之后，配置无效</div><div class="line">	&#125;</div><div class="line">	...							#其他Nginx配置，处于break指令所在作用域的上一层作用域，配置有效</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="return指令"><a href="#return指令" class="headerlink" title="return指令"></a>return指令</h4><p>该指令用于完成对请求的处理，直接向客户端返回响应状态码。处于该指令后的所有Nginx配置都是无效的。该指令可以在server块和location块以及if块中使用，其语法结构有以下几种：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">return [text];</span><br><span class="line">return code URL;</span><br><span class="line">return URL;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">return [text];</div><div class="line">return code URL;</div><div class="line">return URL;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>code，为返回给客户端的HTTP状态代码。可以返回的状态代码为0-999的任意HTTP状态码。非标准的444代码可以强制关闭服务器与客户端的连接而不返回任何响应信息给客户端。</p>
 <p>text，为返回给客户端的响应体内容，支持变量的使用。<code>return 200 &#39;hello from nginx;&#39;</code></p>
 <p>URL，为返回给客户端的URL地址。</p>
 </blockquote>
 <p>从Nginx 0.8.42 开始，当code使用301（表示被请求资源永久移动到新的位置）、302（表示请求的资源现在临时从不同的URL响应，要求使用GET昂视请求）、303（表示对应当前请求的相应可以在另一个URL上找到，并且客户端应当采用GET方式访问那个资源）和307（请求的资源临时从不同的URL响应）代码时，可以使用结构2将新的URL返回给客户端；当code使用除上面提到的其他代码时，可以使用结构1指定text想客户端发送指定的响应体内容。</p>
-<p>当返回状态吗未302或307时，可以使用结构3对URL进行配置。返回的URL中应该包含”http://“、”https://“或者直接使用”$scheme”变量（Request Scheme，代表传输协议，Nginx内置变量）指定。</p>
+<p>当返回状态吗未302或307时，可以使用结构3对URL进行配置。返回的URL中应该包含”<a href="http://&quot;、&quot;https://&quot;或者直接使用&quot;$scheme&quot;变量（Request" target="_blank" rel="external">http://&quot;、&quot;https://&quot;或者直接使用&quot;$scheme&quot;变量（Request</a> Scheme，代表传输协议，Nginx内置变量）指定。</p>
 <blockquote>
 <p>注意：在Nginx 0.7.51之前的版本中，只支持返回204、400、402-406、608、410、413、416和500-504等状态代码。</p>
 </blockquote>
@@ -239,19 +239,19 @@
 <p>URI（Universal Resource Identifier，通用资源标识符），用于对网络中的各种资源进行标识，由存放资源的主机名、片段标识符和相对URI三部分组成。存放资源的主机名一版由传输协议（Scheme）、主机和资源路径三部分组成；片段标识符指向资源内容的具体元素；相对URI表示资源在主机上的相对路径。一版格式为：Scheme:[//][用户名[:密码]@主机名[:端口号]][/资源路径]。</p>
 <p>URL（Uniform Resource Location，统一资源定位符），是用于在Interner中描述资源的字符串，是URI的子集，主要包括传输协议（Scheme）、主机（IP、端口号或者域名）和资源具体地址（目录和文件名）等三部分。一版格式为：Scheme://主机名[:端口号][/资源路径]。</p>
 </blockquote>
-<p>该指令可以在server块或者location块中配置，其语法结构为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rewrite regex replacement [flag];</span><br></pre></td></tr></table></figure></p>
+<p>该指令可以在server块或者location块中配置，其语法结构为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rewrite regex replacement [flag];</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>regex，用于匹配URI的正则表达式。使用”()”标记要截取的内容。</p>
 </blockquote>
 <p>注意：</p>
 <p>rewrite接收到的URI不包括host地址。因此，regex不可能匹配到URI的host地址。我们看下面这个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rewrite myweb.com http://newweb.com/parmanent;</span><br></pre></td></tr></table></figure>
-<p>现在我们希望上面的rewrite指令重写<a href="http://myweb.com/source是办不到的，因为rewrite指令接收到的URI是&quot;/source&quot;，不包含&quot;myweb.com&quot;。" target="_blank" rel="noopener">http://myweb.com/source是办不到的，因为rewrite指令接收到的URI是&quot;/source&quot;，不包含&quot;myweb.com&quot;。</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rewrite myweb.com http://newweb.com/parmanent;</div></pre></td></tr></table></figure>
+<p>现在我们希望上面的rewrite指令重写<a href="http://myweb.com/source是办不到的，因为rewrite指令接收到的URI是&quot;/source&quot;，不包含&quot;myweb.com&quot;。" target="_blank" rel="external">http://myweb.com/source是办不到的，因为rewrite指令接收到的URI是&quot;/source&quot;，不包含&quot;myweb.com&quot;。</a></p>
 <p>另外，请求URL中的请求指令是不包含在rewrite指令接收到的URI内容中的。比如:</p>
 <p><code>http://myweb.com/source?agr1=value&amp;agr2=value2</code>;</p>
 <p>rewrite指令接收到奥的URI为”source”,不包含”?agr1=value&amp;agr2=value2”。</p>
 <blockquote>
-<p>replacement，成功匹配后用于替换URI中被截取内容的字符串。默认情况下，如果该字符串是由”http://“或者”https://“开头的，则不会继续向下对URI进行其他处理，而是直接将重写后的URI返回给客户端。</p>
+<p>replacement，成功匹配后用于替换URI中被截取内容的字符串。默认情况下，如果该字符串是由”<a href="http://&quot;或者&quot;https://&quot;开头的，则不会继续向下对URI进行其他处理，而是直接将重写后的URI返回给客户端。" target="_blank" rel="external">http://&quot;或者&quot;https://&quot;开头的，则不会继续向下对URI进行其他处理，而是直接将重写后的URI返回给客户端。</a></p>
 </blockquote>
 <p>提示：</p>
 <p>刚才学习regex变量时我们提到，rewrite模块快接收到的URI不包含请求URL中的请求指令，但是如果我们希望将这些指令传给重写后的URI，该怎么做呢？我们可以使用Nginx全局变量$request_uri，比如：<br><code>rewrite myweb.com http://example.com$request_uri? permanent;</code></p>
@@ -261,35 +261,31 @@
 <p>flag，用于设置rewrite对URI的处理行为，可以为以下标志中的一个：</p>
 <blockquote>
 <p>last，终止继续在本location块中处理接收到的URI，并将此处重写的URI作为一个新的URI，使用各location块进行处理。该标识将重写后徐的URI重新再server块中执行，为重写后的URI提供了转入到其他location块的机会。我们通过一个例子来加深理解：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">	rewrite ^(/myweb/.*)/media/(.*)\..*$ $1/mp3/$2.mp3 last;</span><br><span class="line">	rewrite ^(/myweb/.*)/audio/(.*)\.*$ $1/mp3/$2.ra last;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">location / &#123;</div><div class="line">	rewrite ^(/myweb/.*)/media/(.*)\..*$ $1/mp3/$2.mp3 last;</div><div class="line">	rewrite ^(/myweb/.*)/audio/(.*)\.*$ $1/mp3/$2.ra last;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>如果URI在第二行被匹配成功并处理，Nginx服务器不会继续使用第三行的配置匹配和处理新的URI，而是让所有的location块重新匹配和处理新的URI。</p>
 <p>break，将此处重写的URI作为一个新的URI，在本快中继续进行处理。该标志将重写后的地址在当前的location块中执行，不会讲新的URI专项到其他的location块。看下面的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">location /myweb/ &#123;</div><div class="line">	rewrite ^(/myweb/.*)/media/(.*)..*$ $1/mp3/$2.mp3 break;</div><div class="line">	rewrite ^(/myweb/.*)/audio/(.*)\.*$ $1/mp3/$2.ra break;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location /myweb/ &#123;</span><br><span class="line">	rewrite ^(/myweb/.*)/media/(.*)..*$ $1/mp3/$2.mp3 break;</span><br><span class="line">	rewrite ^(/myweb/.*)/audio/(.*)\.*$ $1/mp3/$2.ra break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>如果某URI在第二行被匹配成功并处理，Nginx服务器将新的URI继续在该location块中使用第三行进行匹配和处理。新的URI始终是在同一个location块中。</p>
 <blockquote>
 <blockquote>
-<p>redirect, 将重写后的URI返回给客户端，状态代码为302，指明是临时重定向的URI，主要用在replacement变量不是以”http://“或者”https://“开头的情况下。</p>
+<p>redirect, 将重写后的URI返回给客户端，状态代码为302，指明是临时重定向的URI，主要用在replacement变量不是以”<a href="http://&quot;或者&quot;https://&quot;开头的情况下。" target="_blank" rel="external">http://&quot;或者&quot;https://&quot;开头的情况下。</a></p>
 <p>permanent，将重写后的URI返回给客户端，状态码为301，指明是永久重定向URI。</p>
 </blockquote>
 </blockquote>
 <p>在使用flag指令时，一定要注意各个标志之间的配合。我们再来回顾刚才学习break标志时的例子，对比last标志里的例子，如果我们将第二个例子中的break标志换成last标志，会发生什么情况呢？</p>
 <p>细心的读者可能已经发现，在第二个例子中，location块的uri指令是”/myweb/“，而重写后的URI仍然是包含”/myweb/“的，如果使用last标志，重写后的URI还可能会被该location块匹配到，这样就形成了无限循环。Nginx服务器遇到这样的情况，会尝试10次循环之后返回错误状态代码500。</p>
-<h3 id="rewrite-log指令"><a href="#rewrite-log指令" class="headerlink" title="rewrite_log指令"></a>rewrite_log指令</h3><p>该指令配置是否开启URL重写日志的输出功能，其语法结构为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rewrite_log on | off;</span><br></pre></td></tr></table></figure></p>
+<h3 id="rewrite-log指令"><a href="#rewrite-log指令" class="headerlink" title="rewrite_log指令"></a>rewrite_log指令</h3><p>该指令配置是否开启URL重写日志的输出功能，其语法结构为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rewrite_log on | off;</div></pre></td></tr></table></figure></p>
 <p>默认设置为off。如果配置为开启（on),URL重写的相关日志将以notice级别输出到error_log指令配置的日志文件中。</p>
 <h3 id="set指令"><a href="#set指令" class="headerlink" title="set指令"></a>set指令</h3><p>该指令用于设置一个新的变量，其语法结构为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set variable value;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set variable value;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>variable，为变量的名称。注意要用符号”$”作为变量的第一个字符，且变量不能与Nginx服务器预设的全局变量同名。</p>
 <p>value，为变量的值，可以使字符串、其他变量或者变量的组合等。</p>
 </blockquote>
 <h3 id="uninitialized-variable-warn指令"><a href="#uninitialized-variable-warn指令" class="headerlink" title="uninitialized_variable_warn指令"></a>uninitialized_variable_warn指令</h3><p>该指令用于配置使用为初始化的变量时，是否记录警告日志，其语法结构为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uninitialized_variable_warn on | off;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uninitialized_variable_warn on | off;</div></pre></td></tr></table></figure>
 <p>默认设置为开启（on）状态。</p>
 <h3 id="Rewrite-常用全局变量"><a href="#Rewrite-常用全局变量" class="headerlink" title="Rewrite 常用全局变量"></a>Rewrite 常用全局变量</h3><table>
 <thead>
@@ -301,7 +297,7 @@
 <tbody>
 <tr>
 <td style="text-align:left"><strong>$args</strong></td>
-<td style="text-align:left">变量中存放了请求URL中的请求指令。比如<a href="http://www.myweb.name/server/source?arg1=value1&amp;arg2=value2中的&quot;arg1=value1&amp;arg2=value2&quot;" target="_blank" rel="noopener">http://www.myweb.name/server/source?arg1=value1&amp;arg2=value2中的&quot;arg1=value1&amp;arg2=value2&quot;</a></td>
+<td style="text-align:left">变量中存放了请求URL中的请求指令。比如<a href="http://www.myweb.name/server/source?arg1=value1&amp;arg2=value2中的&quot;arg1=value1&amp;arg2=value2" target="_blank" rel="external">http://www.myweb.name/server/source?arg1=value1&amp;arg2=value2中的&quot;arg1=value1&amp;arg2=value2</a>“</td>
 </tr>
 <tr>
 <td style="text-align:left">$content_length</td>
@@ -317,11 +313,11 @@
 </tr>
 <tr>
 <td style="text-align:left">$document_uri</td>
-<td style="text-align:left">变量中存放了请求中的当前URI，并且不包括请求指令，比如<a href="http://www.myweb.name/server/source?arg1=value1&amp;arg2=value2中的&quot;/server/source&quot;" target="_blank" rel="noopener">http://www.myweb.name/server/source?arg1=value1&amp;arg2=value2中的&quot;/server/source&quot;</a></td>
+<td style="text-align:left">变量中存放了请求中的当前URI，并且不包括请求指令，比如<a href="http://www.myweb.name/server/source?arg1=value1&amp;arg2=value2中的&quot;/server/source" target="_blank" rel="external">http://www.myweb.name/server/source?arg1=value1&amp;arg2=value2中的&quot;/server/source</a>“</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>$host</strong></td>
-<td style="text-align:left">变量中存放了请求URL中的主机部分字段，比如<a href="http://www.myweb.name/server中的&quot;www.myweb.name&quot;。如果请求中的主机部分字段不可用或者为空，则存放Nginx配置中server块中server_name指令的配置值" target="_blank" rel="noopener">http://www.myweb.name/server中的&quot;www.myweb.name&quot;。如果请求中的主机部分字段不可用或者为空，则存放Nginx配置中server块中server_name指令的配置值</a></td>
+<td style="text-align:left">变量中存放了请求URL中的主机部分字段，比如<a href="http://www.myweb.name/server中的&quot;www.myweb.name&quot;。如果请求中的主机部分字段不可用或者为空，则存放Nginx配置中server块中server_name指令的配置值" target="_blank" rel="external">http://www.myweb.name/server中的&quot;www.myweb.name&quot;。如果请求中的主机部分字段不可用或者为空，则存放Nginx配置中server块中server_name指令的配置值</a></td>
 </tr>
 <tr>
 <td style="text-align:left">$http_user_agent</td>
@@ -627,11 +623,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
+                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作日记</a>
+                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,10 +636,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -659,7 +651,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网速</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -676,34 +688,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读写分离</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HTTPS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SSL证书</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网速</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dig</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -727,11 +711,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+                <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">dig</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -739,11 +727,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">n</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
+                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -751,11 +739,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">curl</a>
+                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -764,6 +752,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">lsof</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">free</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -779,7 +771,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">free</a>
+                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -787,11 +779,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mkdir</a>
+                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单页应用</a>
+                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -807,7 +799,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
+                <a href="javascript:void(0)" class="js-tag color4">nvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -815,11 +807,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
+                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pomelo</a>
+                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -839,7 +831,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vi</a>
+                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -855,15 +847,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wget</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">work</a>
+                <a href="javascript:void(0)" class="js-tag color3">vi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -891,11 +875,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wget</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">work</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ua</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">n</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -907,15 +919,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">域名解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">个人</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -928,6 +932,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">时序图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">weinre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -965,17 +973,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
-              </li>
             
             <div class="clearfix"></div>
           </ul>
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:
