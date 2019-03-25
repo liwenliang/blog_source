@@ -1,7 +1,7 @@
 ---
 title: Node.js Sequelize如何实现数据库的读写分离
 tags:
-  - 数据库
+  - mysql
 originContent: >-
   一、前言
 
