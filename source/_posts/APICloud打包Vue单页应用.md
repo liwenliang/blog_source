@@ -36,8 +36,9 @@ originContent: >-
 
   index.html添加一些代码用于处理物理返回键：
 
+  ```html
 
-  <!--引用apicloud的脚本-->
+  <!--引用apicloud的脚本(可以不加)-->
 
   <script src="script/api.js"></script>
 
@@ -77,12 +78,17 @@ originContent: >-
     }
   </script>
 
+
+  ```
+
+
   这样打包以后代码还存在index.html里，引用脚本的路径也是apicloud目录下的。之后把dist目录下的文件复制过去就行了。如此一来就能畅享vue带来的高效开发了。
 
    
 
   最后，如果想调用apicloud的组件，可以在vue的组件中这样写：
 
+  ```html
 
   　　<button @click="clickHandler">点击试试</button>
 
@@ -107,6 +113,11 @@ originContent: >-
       created() {
 
       }
+
+  ```
+
+
+  原文地址：https://www.cnblogs.com/undefined000/p/9559694.html
 categories:
   - 移动开发
 toc: false
@@ -115,7 +126,7 @@ date: 2019-03-30 14:05:29
 
 APICloud新建项目后，会生成以下目录结构
 
-![image.png](http://pok5gaadc.bkt.clouddn.com/Fr2qGfMeERsyzXVXNvD2fKfBvoXV)
+![image.png](http://blogimage.houjiyi.com/Fr2qGfMeERsyzXVXNvD2fKfBvoXV)
 
 其中index.html是入口文件，而vue-cli打包生成的文件是在dist目录下
 ```bash
