@@ -7,7 +7,7 @@ originContent: >-
   APICloud新建项目后，会生成以下目录结构
 
 
-  ![image.png](http://pok5gaadc.bkt.clouddn.com/Fr2qGfMeERsyzXVXNvD2fKfBvoXV)
+  ![image.png](http://blogimage.houjiyi.com/Fr2qGfMeERsyzXVXNvD2fKfBvoXV)
 
 
   其中index.html是入口文件，而vue-cli打包生成的文件是在dist目录下
@@ -139,7 +139,7 @@ APICloud新建项目后，会生成以下目录结构
 
 把dist目录中的static文件夹和index.html复制到apicloud的项目文件中即可，覆盖原来的index.html。最终apicloud的目录结构只是比原来多了一个static目录。
 
- 
+ <!-- more -->
 
 vue项目中需要做如下配置，config/index.js中需要把build的assetsPublicPath属性由原来的 /改成 ./，
 
