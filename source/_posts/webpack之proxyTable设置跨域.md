@@ -136,7 +136,7 @@ dev: {
   cssSourceMap: false
 }
 ```
-上面这段代码的效果就是将本地8080端口的一个请求代理到了http://www.abc.com这一域名下：
+上面这段代码的效果就是将本地8080端口的一个请求代理到了 http://www.abc.com 这一域名下：
 
 `'http://localhost:8080/api' ===> 'http://www.abc.com/api'`
 
