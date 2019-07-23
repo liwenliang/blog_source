@@ -6,12 +6,10 @@ tags:
 originContent: |-
   ```html
   <template>
-    <div class="container">
-      <div class="fensug">
-        <div class="waven">
-          <p>100%</p>
-          <div class="wave"></div>
-        </div>
+    <div class="fensug">
+      <div class="waven">
+        <p>100%</p>
+        <div class="wave"></div>
       </div>
     </div>
   </template>
@@ -87,6 +85,12 @@ categories:
 toc: false
 date: 2019-07-23 19:34:45
 ---
+
+想实现这样一个效果，于是网上搜集修改
+
+![image.png](http://blogimage.houjiyi.com/Fl5ilJTLw1xcFDsiWrgiBk0SWS2l)
+
+<!-- more -->
 
 ```html
 <template>
