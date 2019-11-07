@@ -2,7 +2,6 @@
 title: 解决在Centos系统中无法切换到jenkins用户
 tags:
   - jenkins
-originContent: ''
 categories:
   - Web开发
 toc: false

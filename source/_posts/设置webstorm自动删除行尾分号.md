@@ -2,8 +2,6 @@
 title: 设置webstorm自动删除行尾分号
 tags:
   - 开发调试
-originContent: >-
-  ![](http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/WX20180411-181304.png)
 categories:
   - Web开发
 toc: false

@@ -2,7 +2,6 @@
 title: 七牛云存储文件夹上传webpack使用cdn资源地址
 tags:
   - javascript
-originContent: ''
 categories:
   - Web开发
 toc: false

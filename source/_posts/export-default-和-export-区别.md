@@ -2,7 +2,6 @@
 title: export default 和 export 区别
 tags:
   - javascript
-originContent: ''
 categories:
   - Web开发
 toc: false

@@ -2,7 +2,6 @@
 title: 提示错误：jenkins 不在 sudoers 文件中。此事将被报告。
 tags:
   - jenkins
-originContent: ''
 categories:
   - Web开发
 toc: false

@@ -2,7 +2,6 @@
 title: 【Linuc-CentOS 】通过yum安装 指定版本的nodejs
 tags:
   - javascript
-originContent: ''
 categories:
   - Web开发
 toc: false

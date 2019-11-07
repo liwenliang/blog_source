@@ -2,11 +2,6 @@
 title: nodejs项目缓存策略
 tags:
   - nodejs
-originContent: >-
-  项目中一定会用到缓存，能够最大程度的减少服务器压力，但有时候不同业务场景对缓存的使用方式也有所不同，比如我们项目服务端使用的memcached缓存，但当页面大于1M的时候缓存就无法保存，这样缓存的功能就无效了。
-
-
-  之前的逻辑就是缓存失效后逻辑代码组装
 categories:
   - NodeJS
 toc: false

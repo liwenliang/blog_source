@@ -2,7 +2,6 @@
 title: vue源码中有ts语法，vscode查看提示错误问题
 tags:
   - 知识点备忘
-originContent: ''
 categories:
   - Web开发
 toc: false

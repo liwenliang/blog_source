@@ -2,7 +2,6 @@
 title: linux下使用npm install无法安装成功的问题
 tags:
   - nodejs
-originContent: ''
 categories:
   - Web开发
 toc: false

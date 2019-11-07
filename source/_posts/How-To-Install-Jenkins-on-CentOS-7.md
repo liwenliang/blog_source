@@ -2,7 +2,6 @@
 title: How To Install Jenkins on CentOS 7
 tags:
   - jenkins
-originContent: ''
 categories:
   - Web开发
 toc: false
