@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://www.houjiyi.com">
   <title>防抖与节流 | 后记忆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="防抖与节流的应用首先这是一道面试题，我对面试题不感兴趣，但我对面试题的应用比较感兴趣，这两个词听着高大上，其实在业务应用中用的还是很多的，举两个例子更好理解：  防抖应用  后端防抖：一个token两个小时内没有新的请求则失效  token经常存在redis缓存里，有失效时间，如果两个小时没有新请求自动失效，如果有新的请求，调整这个token失效时间   节流应用  前端节流：浏览器的resize">
+  <meta name="description" content="防抖与节流的应用首先这是一道面试题，我对面试题不感兴趣，但我对面试题的应用比较感兴趣，这两个词听着高大上，其实在业务应用中用的还是很多的，举两个例子更好理解：  防抖应用   后端防抖：一个token两个小时内没有新的请求则失效  token经常存在redis缓存里，有失效时间，如果两个小时没有新请求自动失效，如果有新的请求，调整这个token失效时间   节流应用   前端节流：浏览器的resi">
 <meta name="keywords" content="知识点备忘">
 <meta property="og:type" content="article">
 <meta property="og:title" content="防抖与节流">
 <meta property="og:url" content="https://www.houjiyi.com/2019/09/04/防抖与节流/index.html">
 <meta property="og:site_name" content="后记忆">
-<meta property="og:description" content="防抖与节流的应用首先这是一道面试题，我对面试题不感兴趣，但我对面试题的应用比较感兴趣，这两个词听着高大上，其实在业务应用中用的还是很多的，举两个例子更好理解：  防抖应用  后端防抖：一个token两个小时内没有新的请求则失效  token经常存在redis缓存里，有失效时间，如果两个小时没有新请求自动失效，如果有新的请求，调整这个token失效时间   节流应用  前端节流：浏览器的resize">
+<meta property="og:description" content="防抖与节流的应用首先这是一道面试题，我对面试题不感兴趣，但我对面试题的应用比较感兴趣，这两个词听着高大上，其实在业务应用中用的还是很多的，举两个例子更好理解：  防抖应用   后端防抖：一个token两个小时内没有新的请求则失效  token经常存在redis缓存里，有失效时间，如果两个小时没有新请求自动失效，如果有新的请求，调整这个token失效时间   节流应用   前端节流：浏览器的resi">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-11-07T02:26:25.808Z">
+<meta property="og:updated_time" content="2019-11-07T02:47:27.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="防抖与节流">
-<meta name="twitter:description" content="防抖与节流的应用首先这是一道面试题，我对面试题不感兴趣，但我对面试题的应用比较感兴趣，这两个词听着高大上，其实在业务应用中用的还是很多的，举两个例子更好理解：  防抖应用  后端防抖：一个token两个小时内没有新的请求则失效  token经常存在redis缓存里，有失效时间，如果两个小时没有新请求自动失效，如果有新的请求，调整这个token失效时间   节流应用  前端节流：浏览器的resize">
+<meta name="twitter:description" content="防抖与节流的应用首先这是一道面试题，我对面试题不感兴趣，但我对面试题的应用比较感兴趣，这两个词听着高大上，其实在业务应用中用的还是很多的，举两个例子更好理解：  防抖应用   后端防抖：一个token两个小时内没有新的请求则失效  token经常存在redis缓存里，有失效时间，如果两个小时没有新请求自动失效，如果有新的请求，调整这个token失效时间   节流应用   前端节流：浏览器的resi">
   
     <link rel="alternative" href="/atom.xml" title="后记忆" type="application/atom+xml">
   
@@ -187,14 +187,14 @@ var _hmt = _hmt || [];
       
         <h2 id="防抖与节流的应用"><a href="#防抖与节流的应用" class="headerlink" title="防抖与节流的应用"></a>防抖与节流的应用</h2><p>首先这是一道面试题，我对面试题不感兴趣，但我对面试题的应用比较感兴趣，这两个词听着高大上，其实在业务应用中用的还是很多的，举两个例子更好理解：</p>
 <ol>
-<li>防抖应用</li>
+<li>防抖应用 </li>
 </ol>
 <p>后端防抖：一个token两个小时内没有新的请求则失效</p>
 <blockquote>
 <p>token经常存在redis缓存里，有失效时间，如果两个小时没有新请求自动失效，如果有新的请求，调整这个token失效时间</p>
 </blockquote>
 <ol start="2">
-<li>节流应用</li>
+<li>节流应用 </li>
 </ol>
 <p>前端节流：浏览器的resize触发事件控制执行频率</p>
 <blockquote>
@@ -202,6 +202,7 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>防抖：debounce<br>debounce time 去抖动时间</p>
 <p>节流：throttle<br>n. 节流阀；[车辆] 风门；喉咙<br>vt. 压制，扼杀；使……窒息；使……节流<br>vi. 节流，减速；窒息</p>
+<p> end</p>
 
       
 
@@ -469,11 +470,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">计划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计划</a>
+                <a href="javascript:void(0)" class="js-tag color1">知识点备忘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">apicloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,11 +506,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">域名</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,11 +518,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,7 +534,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">koajs</a>
+                <a href="javascript:void(0)" class="js-tag color4">electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,11 +550,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color3">意义</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color3">全景</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,7 +562,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">electron</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">域名</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -562,30 +579,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">开发调试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">知识点备忘</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">apicloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">意义</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">全景</a>
               </li>
              
               <li class="article-tag-list-item">
