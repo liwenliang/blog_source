@@ -166,6 +166,98 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-websocket-https-连接" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/02/websocket-https-连接/">websocket https 连接</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/02/websocket-https-连接/" class="archive-article-date">
+  	<time datetime="2018-04-02T06:14:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近部署项目需要用到wss连接，这时候就需要自己配置nginx对应的https配置，<br>wss连接实际上是通过https连接的，默认支持，所以我的配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">map $http_upgrade $connection_upgrade &#123;</span><br><span class="line">    default upgrade;</span><br><span class="line">    &apos;&apos; close;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen       443 ssl;</span><br><span class="line">        server_name  XXX.XX.XXX;</span><br><span class="line"></span><br><span class="line">        ssl on;</span><br><span class="line">        ssl_certificate ./keys/XXX.XX.XXX.crt;</span><br><span class="line">        ssl_certificate_key ./keys/XXX.XX.XXX.key;</span><br><span class="line">        ssl_session_timeout 5m;</span><br><span class="line">        ssl_protocols SSLv2 SSLv3 TLSv1;</span><br><span class="line">        ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">        access_log  /letv/logs/nginx/socket.access.log main;</span><br><span class="line">        error_log /letv/logs/nginx/socket.err.log;</span><br><span class="line"></span><br><span class="line">        root            /letv/www;</span><br><span class="line">        location /gate &#123;</span><br><span class="line">                proxy_pass https://127.0.0.1:3010;</span><br><span class="line">                proxy_redirect      off;</span><br><span class="line">                proxy_set_header X-Real-IP        $remote_addr;</span><br><span class="line">                proxy_set_header Host             $host;</span><br><span class="line">                proxy_set_header X-Forwarded-For  $proxy_add_x_forwarded_for;</span><br><span class="line"></span><br><span class="line">                proxy_http_version  1.1;</span><br><span class="line">                proxy_set_header    Upgrade $http_upgrade;</span><br><span class="line">                proxy_set_header    Connection &apos;upgrade&apos;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /connector_1 &#123;</span><br><span class="line">                proxy_pass https://127.0.0.1:4010;</span><br><span class="line">                proxy_redirect      off;</span><br><span class="line">                proxy_set_header X-Real-IP        $remote_addr;</span><br><span class="line">                proxy_set_header Host             $host;</span><br><span class="line">                proxy_set_header X-Forwarded-For  $proxy_add_x_forwarded_for;</span><br><span class="line"></span><br><span class="line">                proxy_http_version  1.1;</span><br><span class="line">                proxy_set_header    Upgrade $http_upgrade;</span><br><span class="line">                proxy_set_header    Connection &apos;upgrade&apos;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">                root   html;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中通过路由做了反向代理，这么做的坏处是开发环境不太好整，最好是运维开放这几个websocket端口</p>
+<p>找到运维，有些开放的，使用开放的就好了</p>
+<p>公司机器的外网非80端口被禁用了不少，找到运维才知道有哪些是不被禁用的，我们使用不被禁用的就没必要再配置那么多nginx配置了。</p>
+<p>公司内网wiki地址：<a href="http://wiki.letv.cn/pages/viewpage.action?pageId=56973252" target="_blank" rel="noopener">http://wiki.letv.cn/pages/viewpage.action?pageId=56973252</a></p>
+<p>最后的配置方式如下即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">map $http_upgrade $connection_upgrade &#123;</span><br><span class="line">    default upgrade;</span><br><span class="line">    &apos;&apos; close;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen       443 ssl;</span><br><span class="line">        server_name  XXX.XX.XXX;</span><br><span class="line"></span><br><span class="line">        ssl on;</span><br><span class="line">        ssl_certificate ./keys/XXX.XX.XXX.crt;</span><br><span class="line">        ssl_certificate_key ./keys/XXX.XX.XXX.key;</span><br><span class="line">        ssl_session_timeout 5m;</span><br><span class="line">        ssl_protocols SSLv2 SSLv3 TLSv1;</span><br><span class="line">        ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">        access_log  /letv/logs/nginx/socket.access.log main;</span><br><span class="line">        error_log /letv/logs/nginx/socket.err.log;</span><br><span class="line"></span><br><span class="line">        root            /letv/www;</span><br><span class="line"></span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">                root   html;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">websocket</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/02/websocket-https-连接/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pm2启动npm下服务的命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -970,103 +1062,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/02/02/看懂UML类图和时序图/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-一些职位的简写" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/24/一些职位的简写/">一些职位的简写</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/24/一些职位的简写/" class="archive-article-date">
-  	<time datetime="2018-01-24T03:56:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>RD – Research &amp; Develop 研发工程师</p>
-<p>FE – Front End 前端工程师</p>
-<p>BE – Back End 后端工程师</p>
-<p>QA – Quality Assurance 测试工程师</p>
-<p>DBA – Database Administrator 数据库</p>
-<p>PM – Product &amp; Marketing 产品经理</p>
-<p>TS – Technology Support 技术支持</p>
-<p>OP – Operation 运维工程师</p>
-<p>UE(UX) – User Experience 用户体验设计师</p>
-<p>UI – User Interface 用户界面设计师</p>
-<p>UER – User Experience Research 用户研究</p>
-        
-          <a class="article-more-a" href="/2018/01/24/一些职位的简写/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基本知识</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/项目总结//" class="article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/24/一些职位的简写/">展开全文 >></a>
         </p>
       
 

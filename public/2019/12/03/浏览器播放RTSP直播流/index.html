@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.houjiyi.com">
-  <title>后记忆</title>
+  <title>浏览器播放RTSP直播流 | 后记忆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="健康、生活、工作">
-<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="后记忆">
-<meta property="og:url" content="https://www.houjiyi.com/page/2/index.html">
+  <meta name="description" content="最近有个需求是将rtsp直播流在浏览器上直接播放，要求低延迟效果好，查并且尝试了一系列的方法，发现目前体验最好的是通过node将直播流转成二进制图片数据，然后在浏览器端绘制，用到的包有jsmpeg、node-rtsp-stream-jsmpeg server端：服务器端需要安装ffmpeg，nodejs，如果是本地的话装在本地就可以了 1234567891011const Stream = req">
+<meta name="keywords" content="Web开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器播放RTSP直播流">
+<meta property="og:url" content="https://www.houjiyi.com/2019/12/03/浏览器播放RTSP直播流/index.html">
 <meta property="og:site_name" content="后记忆">
-<meta property="og:description" content="健康、生活、工作">
+<meta property="og:description" content="最近有个需求是将rtsp直播流在浏览器上直接播放，要求低延迟效果好，查并且尝试了一系列的方法，发现目前体验最好的是通过node将直播流转成二进制图片数据，然后在浏览器端绘制，用到的包有jsmpeg、node-rtsp-stream-jsmpeg server端：服务器端需要安装ffmpeg，nodejs，如果是本地的话装在本地就可以了 1234567891011const Stream = req">
 <meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-12-03T03:50:20.043Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="后记忆">
-<meta name="twitter:description" content="健康、生活、工作">
+<meta name="twitter:title" content="浏览器播放RTSP直播流">
+<meta name="twitter:description" content="最近有个需求是将rtsp直播流在浏览器上直接播放，要求低延迟效果好，查并且尝试了一系列的方法，发现目前体验最好的是通过node将直播流转成二进制图片数据，然后在浏览器端绘制，用到的包有jsmpeg、node-rtsp-stream-jsmpeg server端：服务器端需要安装ffmpeg，nodejs，如果是本地的话装在本地就可以了 1234567891011const Stream = req">
   
     <link rel="alternative" href="/atom.xml" title="后记忆" type="application/atom+xml">
   
@@ -164,33 +165,66 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-linux下使用npm-install无法安装成功的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-浏览器播放RTSP直播流" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/linux下使用npm-install无法安装成功的问题/">linux下使用npm install无法安装成功的问题</a>
+    <h1 class="article-title" itemprop="name">
+      浏览器播放RTSP直播流
     </h1>
   
 
         
-        <a href="/2019/08/13/linux下使用npm-install无法安装成功的问题/" class="archive-article-date">
-  	<time datetime="2019-08-13T08:44:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
+        <a href="/2019/12/03/浏览器播放RTSP直播流/" class="archive-article-date">
+  	<time datetime="2019-12-03T03:50:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install</span><br></pre></td></tr></table></figure>
-<p>可能是权限问题</p>
+        <p>最近有个需求是将rtsp直播流在浏览器上直接播放，要求低延迟效果好，查并且尝试了一系列的方法，发现目前体验最好的是通过node将直播流转成二进制图片数据，然后在浏览器端绘制，用到的包有jsmpeg、node-rtsp-stream-jsmpeg</p>
+<p>server端：服务器端需要安装ffmpeg，nodejs，如果是本地的话装在本地就可以了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Stream = <span class="built_in">require</span>(<span class="string">'node-rtsp-stream-jsmpeg'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">  name: <span class="string">'streamName'</span>,</span><br><span class="line">  url: <span class="string">'rtsp://xxxx'</span>,</span><br><span class="line">  wsPort: <span class="number">3333</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">stream = <span class="keyword">new</span> Stream(options)</span><br><span class="line"></span><br><span class="line">stream.start()</span><br></pre></td></tr></table></figure>
+<p>client端：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>DEMO node-rtsp-stream-jsmpeg<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"jsmpeg.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"video-canvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">  <span class="keyword">var</span> url = <span class="string">'ws://xxxx:3333'</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'video-canvas'</span>)</span></span><br><span class="line"><span class="actionscript">  <span class="keyword">var</span> player = <span class="keyword">new</span> JSMpeg.Player(url, &#123; canvas: canvas, videoBufferSize: <span class="number">1024</span>*<span class="number">1024</span> &#125;)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>整体体验效果不错。</p>
 
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wxpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -201,7 +235,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">nodejs</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
         		</li>
       		
 		</ul>
@@ -213,7 +247,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        			<a href="/categories/项目总结//" class="article-tag-list-link color5">项目总结</a>
         		</li>
       		
 		</ul>
@@ -221,16 +255,75 @@ var _hmt = _hmt || [];
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/13/linux下使用npm-install无法安装成功的问题/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.houjiyi.com/2019/12/03/浏览器播放RTSP直播流/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/15/从零开始开发一个vue组件打包并发布到npm/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">从零开始开发一个vue组件打包并发布到npm</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -245,825 +338,32 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【Linuc-CentOS-】通过yum安装-指定版本的nodejs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/【Linuc-CentOS-】通过yum安装-指定版本的nodejs/">【Linuc-CentOS 】通过yum安装 指定版本的nodejs</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/13/【Linuc-CentOS-】通过yum安装-指定版本的nodejs/" class="archive-article-date">
-  	<time datetime="2019-08-13T08:40:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -</span><br><span class="line">sudo yum -y install nodejs</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/13/【Linuc-CentOS-】通过yum安装-指定版本的nodejs/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-去掉页面的title标题，同时不显示默认链接" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/07/去掉页面的title标题，同时不显示默认链接/">去掉页面的title标题，同时不显示默认链接</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/07/去掉页面的title标题，同时不显示默认链接/" class="archive-article-date">
-  	<time datetime="2019-08-07T01:43:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有时候我们需要页面的title不显示，尤其在移动端APP内嵌一个网页的时候，有个标题或者标题为空默认显示页面链接都不太友好，这时候有个简单方式可以处理：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.title = <span class="string">'\u200E'</span></span><br></pre></td></tr></table></figure></p>
-<p>加了以后就没了，亲测可行。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/移动开发//" class="article-tag-list-link color5">移动开发</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/移动开发/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/07/去掉页面的title标题，同时不显示默认链接/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-NGINX-SSH-Tunnel-把本地开发环境公布到互联网上" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/26/NGINX-SSH-Tunnel-把本地开发环境公布到互联网上/">NGINX + SSH Tunnel 把本地开发环境公布到互联网上</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/26/NGINX-SSH-Tunnel-把本地开发环境公布到互联网上/" class="archive-article-date">
-  	<time datetime="2019-07-26T03:09:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在调试一些接口的时候，你的网站应用要跟其它的一些外部服务进行交流，你发给它一点数据，它也会返回给你一点数据。但是如果是在本地开发环境上调试，你只能发送给外部服务数据，而外部服务返回来的数据你的本地环境是收不到的。因为你的本地环境并没有一个固定的公网 IP 地址。</p>
-<p>我不想直接在服务器上去调试，因为复杂而且不方便，忽然想到了之前用过的 BrowserSync 工具，有一个 Tunnel 选项，可以把在本地创建的服务器公布到互联网上。我又想到了 SSH 有个 Tunnel 功能，原来用它作为本地电脑的代理用，我想大概可以用它，让我的在公网上的一台服务器接待请求，再把请求转到我的本地开发环境上，然后就去搜索关键词 NGINX，SSH，Tunnel ，找到了答案。</p>
-<p>用 SSH 在本地电脑与公网服务器之间打开一个通道，配置公网服务器的 NGINX，把收到的请求转到本地电脑与公网服务器的这个通道上。</p>
-        
-          <a class="article-more-a" href="/2019/07/26/NGINX-SSH-Tunnel-把本地开发环境公布到互联网上/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/26/NGINX-SSH-Tunnel-把本地开发环境公布到互联网上/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-CSS3实现波浪进度球" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/23/CSS3实现波浪进度球/">CSS3实现波浪进度球</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/23/CSS3实现波浪进度球/" class="archive-article-date">
-  	<time datetime="2019-07-23T11:34:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>想实现这样一个效果，于是网上搜集修改</p>
-<p><img src="http://blogimage.houjiyi.com/Fl5ilJTLw1xcFDsiWrgiBk0SWS2l" alt="image.png"></p>
-        
-          <a class="article-more-a" href="/2019/07/23/CSS3实现波浪进度球/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/H5开发//" class="article-tag-list-link color5">H5开发</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/H5开发/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/23/CSS3实现波浪进度球/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-移动设备上Touchmove获取当前触摸的Dom节点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/18/移动设备上Touchmove获取当前触摸的Dom节点/">移动设备上Touchmove获取当前触摸的Dom节点</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/18/移动设备上Touchmove获取当前触摸的Dom节点/" class="archive-article-date">
-  	<time datetime="2019-07-18T01:58:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们通过touchmove事件返回的event对象，可以获取当前手指触摸元素的clientX和clientY的值，将值传入document.elementFromPoint就可获取当前触摸的值，这里需要注意的是此方法返回的是最顶层的Dom，所以务必将你需要的Dom的z-index设置为最高，分享些许我在此项目的核心代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 获取存储当前Dom位置的对象</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="keyword">var</span> myLocation = e.originalEvent.changedTouches[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 取clientX及clientY并传入elementFromPoint获取当前手指触摸的Dom</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="keyword">var</span> realTarget = <span class="built_in">document</span>.elementFromPoint(myLocation.clientX, myLocation.clientY);</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/移动开发//" class="article-tag-list-link color5">移动开发</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/移动开发/H5开发//" class="article-tag-list-link color5">H5开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/18/移动设备上Touchmove获取当前触摸的Dom节点/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-“我在星巴克坐了3个月”：那些假装上班的被裁中年人" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/05/“我在星巴克坐了3个月”：那些假装上班的被裁中年人/">“我在星巴克坐了3个月”：那些假装上班的被裁中年人</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/05/“我在星巴克坐了3个月”：那些假装上班的被裁中年人/" class="archive-article-date">
-  	<time datetime="2019-07-05T08:57:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>中年的到来总会让人感到不安，让人联想到失业，如果这样的事情真的发生，我们能做些什么？</p>
-<p>其实，“经济寒冬带来的时间红利，正是成长的最好时机。”希望这篇文章对你有所启发。</p>
-        
-          <a class="article-more-a" href="/2019/07/05/“我在星巴克坐了3个月”：那些假装上班的被裁中年人/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">意义</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/生活玩乐//" class="article-tag-list-link color5">生活玩乐</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/05/“我在星巴克坐了3个月”：那些假装上班的被裁中年人/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vue源码中有ts语法，vscode查看提示错误问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/05/vue源码中有ts语法，vscode查看提示错误问题/">vue源码中有ts语法，vscode查看提示错误问题</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/05/vue源码中有ts语法，vscode查看提示错误问题/" class="archive-article-date">
-  	<time datetime="2019-07-05T06:17:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://blogimage.houjiyi.com/FgAljCtSYWGdSzOMaARnwcGI80gg" alt="image.png"></p>
-<p>这个原因是因为vscode默认开启了对js文件的验证检查，可以在用户设置区禁用它，如图最后一行</p>
-<p><img src="http://blogimage.houjiyi.com/FvlhISS_7KW8RUIaNJ2zNXY1B0ir" alt="image.png"></p>
-<p>这样即可让vscode不再错误的验证了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/05/vue源码中有ts语法，vscode查看提示错误问题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-export-default-和-export-区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/export-default-和-export-区别/">export default 和 export 区别</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/04/export-default-和-export-区别/" class="archive-article-date">
-  	<time datetime="2019-07-04T05:08:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>export 与 export default 均可用于导出常量、函数、文件、模块等</li>
-<li>你可以在其它文件或模块中通 import 导入</li>
-<li>在一个文件或模块中，export、import可以有多个，export default仅有一个</li>
-<li>通过 export 方式导出，在导入时要加{ }，export default 则不需要</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// export</span></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Login</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;...&#125;</span><br><span class="line"><span class="keyword">import</span> &#123;Login&#125; <span class="keyword">from</span> <span class="string">'./login'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//export default</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;...&#125;</span><br><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">'./home'</span>;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/04/export-default-和-export-区别/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-把一件事坚持30天（结果惊人）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/03/把一件事坚持30天（结果惊人）/">把一件事坚持30天（结果惊人）</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/03/把一件事坚持30天（结果惊人）/" class="archive-article-date">
-  	<time datetime="2019-07-03T10:04:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>国外有一个叫摩根的青年，每天很闲，有天突发奇想——连续吃三十天麦当劳会怎样？</p>
-<p>他说干就干，一日三餐都吃麦当劳，连吃三十天。</p>
-<p>他还用摄像机记录下了这一过程。</p>
-<p>三十天后，摩根的体重增加了25磅（约23斤），而且还出现了轻度抑郁和肝脏衰竭现象。</p>
-<p>要知道，之前摩根可是非常健康的，真是no zuo no die why you try。<br><img src="http://blogimage.houjiyi.com/Ft3amoag_Tr0FYui86uwKoVg9rTU" alt="image.png"></p>
-        
-          <a class="article-more-a" href="/2019/07/03/把一件事坚持30天（结果惊人）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">意义</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/生活玩乐//" class="article-tag-list-link color5">生活玩乐</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/03/把一件事坚持30天（结果惊人）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1087,8 +387,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

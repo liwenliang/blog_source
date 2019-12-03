@@ -81,7 +81,7 @@ theme: yilia
 deploy:
   type: git
   # 下方的GH_TOKEN会被.travis.yml中sed命令替换
-  repo: https://0dd242a9dcbcd020c4b75bdb6625ac0b11f057f4@github.com/liwenliang/liwenliang.github.io.git
+  repo: https://GH_TOKEN@github.com/liwenliang/liwenliang.github.io.git
   branch: master
 
 
