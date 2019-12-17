@@ -2,7 +2,6 @@
 title: 浏览器播放RTSP直播流
 tags:
   - Web开发
-originContent: ''
 categories:
   - 项目总结
 toc: false
@@ -10,6 +9,8 @@ date: 2019-12-03 11:50:20
 ---
 
 最近有个需求是将rtsp直播流在浏览器上直接播放，要求低延迟效果好，查并且尝试了一系列的方法，发现目前体验最好的是通过node将直播流转成二进制图片数据，然后在浏览器端绘制，用到的包有jsmpeg、node-rtsp-stream-jsmpeg
+
+有效的rtsp直播流：rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov
 
 server端：服务器端需要安装ffmpeg，nodejs，如果是本地的话装在本地就可以了
 

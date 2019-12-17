@@ -187,6 +187,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近有个需求是将rtsp直播流在浏览器上直接播放，要求低延迟效果好，查并且尝试了一系列的方法，发现目前体验最好的是通过node将直播流转成二进制图片数据，然后在浏览器端绘制，用到的包有jsmpeg、node-rtsp-stream-jsmpeg</p>
+<p>有效的rtsp直播流：rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov</p>
 <p>server端：服务器端需要安装ffmpeg，nodejs，如果是本地的话装在本地就可以了</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Stream = <span class="built_in">require</span>(<span class="string">'node-rtsp-stream-jsmpeg'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">  name: <span class="string">'streamName'</span>,</span><br><span class="line">  url: <span class="string">'rtsp://xxxx'</span>,</span><br><span class="line">  wsPort: <span class="number">3333</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">stream = <span class="keyword">new</span> Stream(options)</span><br><span class="line"></span><br><span class="line">stream.start()</span><br></pre></td></tr></table></figure>
 <p>client端：</p>
@@ -1162,11 +1163,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">知识点备忘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">计划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">知识点备忘</a>
+                <a href="javascript:void(0)" class="js-tag color5">基本知识</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1175,10 +1184,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基本知识</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1203,10 +1208,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
