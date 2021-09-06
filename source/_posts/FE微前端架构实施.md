@@ -3,14 +3,12 @@ title: FE微前端架构实施
 tags:
   - Web开发
   - 微前端
-originContent: ''
 categories:
   - Web开发
   - 性能优化
 toc: false
 date: 2021-03-12 20:20:10
 ---
-
 
 # 锋物物管系统-子应用模板
 
@@ -53,16 +51,14 @@ date: 2021-03-12 20:20:10
 > 
 > 2. 主应用路由配置事例：fpms_pro/src/config/modules/MicroAppTest.js
 > 
-> 3. 如果要查看demo，则需要注释掉`/micro`路由的hidden属性，使之可见。对应的
-> 需要运行子应用`fpms_app_template`,这样才能查看效果
+> 3. 如果要查看demo，url增加参数`debug=1`即可
 > 
 > 4. 开发独立项目时，需复制`fpms_app_template`项目，然后需要做这么几步：
->   1. package.json中name重新命名，例如：`fpms_app1`
->   2. `/src/router/index.js`中`microapp`根目录根据具体情况命名，例如`app1`
->   3. `/src/config/router.config.js`中的路由，根据业务情况进行修改
->   4. 修改项目运行端口10001到其他端口，例如：10002，只要保证主应用中已经加载的子应用没用过即可
+> 1. package.json中name重新命名，例如：`fpms_app1`
+> 2. `/src/config/router.config.js`中的路由，根据业务情况进行修改
+> 3. 修改项目运行端口10001到其他端口，例如：10002，只要保证主应用中已经加载的子应用没用过即可
 >
-> 5. 然后再说下主应用中AppList.js需要添加的配置：
+> 4. 然后再说下主应用中AppList.js需要添加的配置：
 >   ```
 >   {
 >      name: 'app1',
@@ -71,19 +67,13 @@ date: 2021-03-12 20:20:10
 >      activeRule: '/app1/'
 >   }
 >   ```
-> 6. 虽然当前架构支持任意开发语言进行子应用的开发，但这里还是建议使用相同的技术栈，便于后期维护
-> 7. 子应用在独立运行时会展示自己的头部和左侧菜单，运行在基座应用中头部和左侧菜单不展示
-> 8. 状态的传递通过基座应用，通过对基座应用某个状态的监听，在子应用中处理对应的逻辑，例如：groupItem
-> 相关的配置在`main.js`的mount函数下。实际情况并不建议应用之间进行过多的数据传递，如果确实非常多，理 
-> 论上应该是同一个应用。
-> 9. 关于代码复用，当我们有精力可以构建并维护自己的组件库的时候，可以使用组件库的方式来对公共组件进行复用，
-> 但目前我们依然是在各自项目中维护需要的组件。这意味着如果别的项目中有相同的组件，你需要拷贝粘贴到自己的项
-> 目中。
-> 10. 关于什么情况下使用子应用的方式进行开发部署；由于拆分成子应用也同样会带来维护上的成本，因此目前的拆分
-> 原则是根据团队进行拆分，例如一个独立团队对相对独立的模块进行开发；当然如果后期已有模块需要重构，则也可以
-> 使用这种方式进行，因为这也是微前端架构的一个优势。
-> 11. 子应用应该有自己的域名，因此逻辑上是可以独立运行上线使用的，如果没有域名，可以通过path在nginx上做
-> 相关配置。
+> 5. 虽然当前架构支持任意开发语言进行子应用的开发，但这里还是建议使用相同的技术栈，便于后期维护
+> 6. 子应用在独立运行时会展示自己的头部和左侧菜单，运行在基座应用中头部和左侧菜单不展示
+> 7. 状态的传递通过基座应用，通过对基座应用某个状态的监听，在子应用中处理对应的逻辑，例如：groupItem
+> 相关的配置在`main.js`的mount函数下。实际情况并不建议应用之间进行过多的数据传递，如果确实非常多，理论上应该是同一个应用。
+> 8. 关于代码复用，当我们有精力可以构建并维护自己的组件库的时候，可以使用组件库的方式来对公共组件进行复用
+> 9. 关于什么情况下使用子应用的方式进行开发部署；由于拆分成子应用也同样会带来维护上的成本，因此目前的拆分原则是根据团队进行拆分，例如一个独立团队对相对独立的模块进行开发；当然如果后期已有模块需要重构，则也可以使用这种方式进行，因为这也是微前端架构的一个优势。
+> 10. 子应用应该有自己的域名，因此逻辑上是可以独立运行上线使用的，如果没有域名，可以通过path在nginx上做相关配置。
 > 
 
 ### 关于部署上线
@@ -91,21 +81,40 @@ date: 2021-03-12 20:20:10
 #### 独立域名部署
 > 
 > 首先，子应用有自己的独立域名，并且支持https，例如：
->   1. pms-microapp.gmtech.top            解析同 pms.gmtech.top
->   2. pms-microapp-dev.gmtech.top        解析同 pms-dev.gmtech.top 192.168.238.178
->   3. pms-microapp-test.gmtech.top       解析同 pms-test.gmtech.top 192.168.235.186
+>   1. microapp.pms.gmtech.top
 > 
-> 这中部署方式有些必要条件：比如比较重要的独立系统需要集成到我们的系统；资源需要支持CORS跨域请求，
-> 域名支持https访问。
+> 独立域名这种部署方式有些必要条件：
+> 1. 资源需要支持CORS跨域请求，配置nginx
+> 2. 域名支持https访问。
 > 
 > 相关需要调整文件的地方：
 > 1. 主应用里AppList.js中的entry的写法：
 > ```
-> entry: isDev ? 'http://localhost:10001' : `//pms-microapp${suffix}.gmtech.top`
+>  {
+>    name: 'microapp',
+>    entry: getAppLoadUri('microapp', 10001),
+>    container: '#appContainer',
+>    activeRule: '/microapp/'
+>  }
+> entry获取合适的域名地址，这里方法为：
+>
+> const env = process.env.NODE_ENV
+> function getAppLoadUri (appName, port) {
+>   const hostName = location.hostname
+>   const protocol = location.protocol
+>   if (env === 'local') {
+>     return `http://localhost:${port}/${appName}/`
+>   } else if (env === 'development' || env === 'test') {
+>     return `/${appName}/`
+>   } else {
+>     return `${protocol}//${appName}.${hostName}/${appName}/`
+>   }
+> }
+>
 > ```
-> 2. 子应用中vue.config.js中
+> 2. 子应用中vue.config.js中,线上访问需要将静态资源上传到CDN上
 > ```javascript
-> const publicPath = '/'
+> const publicPath = process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true' ? 'https://pms-static.gmtech.top/fe/src/fpms_microapp/dist/' : '/microapp/'
 > ```
 > 3. 子应用中router/index.js中
 > ```javascript
@@ -144,16 +153,13 @@ date: 2021-03-12 20:20:10
 > 相关需要调整文件的地方：
 > 1. 主应用里AppList.js中的entry的写法：
 > ```
-> entry: isDev ? 'http://localhost:10001/microapp/' : `/microapp/`
+> entry: getAppLoadUri('microapp', 10001),
 > ```
-> 2. 子应用中vue.config.js中
+> 2. 子应用中vue.config.js中,线上访问需要将静态资源上传到CDN上
 > ```javascript
-> const publicPath = '/microapp/'
+> const publicPath = process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true' ? 'https://pms-static.gmtech.top/fe/src/fpms_microapp/dist/' : '/microapp/'
 > ```
-> 3. 子应用中router/index.js中
-> ```javascript
-> base: '/microapp'
-> ```
+> 3. 子应用中router/index.js中base始终保持'/'会比较合适，因为子应用与子应用之间的跳转需要使用path方式，如果配置了base则跳转会出现问题。
 > 4. 注意这几个地方的写法，path部署和通过域名部署是不一样的。
 > 5. nginx配置方式
 > ```
@@ -191,13 +197,13 @@ date: 2021-03-12 20:20:10
 > 有了这些内容，我们想如何进行一个项目的开发都变得非常灵活
 
 ### 当前应用的部署方式
-> 当前系统目前使用了path的部署方式，本地开发不用多说，线上环境的展示则依赖基座应用，因为
-> 他们是相同的域名。按照独立应用的方式进行简单修改，就可以方便的把一个独立项目集成到我们
-> 的系统。
+> 目前我们的线上环境使用的是独立域名部署方式，因为在线上是部署在K8S上，不同子应用需要能够独立运行，所以这里必须给每个子应用一个独立的域名。
+> 但是为了兼顾便捷性，我们在开发环境和测试环境使用的是path方式，这样能够节省维护子域名的成本。
+> 本地开发使用localhost，dev环境和test环境使用path配置，线上和预发布环境使用子域名。
 
 ### 参考
 > 项目参考乾坤框架：https://qiankun.umijs.org/zh/guide
 > 
 > 在保证业务需求的前提下，使用渐进式的改造方案，避免因为改造造成项目的大量修改
-
-
+>
+> 微前端的前提，还是得有主体应用，然后才有微组件或微应用，解决的是可控体系下的前端协同开发问题（含空间分离带来的协作和时间延续带来的升级维护）

@@ -1,8 +1,8 @@
 ---
 title: 利用gitlab-ci将前端项目在gitlab上持续集成
 tags:
-  - 开发调试
   - Web开发
+  - 开发调试
 categories:
   - Web开发
 toc: false
@@ -160,3 +160,12 @@ deploy_stage:
 ## 测试
 最后一步就是提交对应分支的代码，看运行结果了
 ![image.png](http://blogimage.houjiyi.com/FjqfZmHbNRVXHTFt7sm5HfKwQRUl)
+
+## 写在后面 
+由于前端项目大部分都很类似，新项目，新子应用的代码结构和打包方式也都是类似的，因此，可以使用“组CI”的概念，目前用的就是这个，在FE组上创建CI，这样组下的所有项目只要再CI上开启的应用组配置，就可以做到子应用无需单独配置的目的，这个是非常方便的，避免了来一个项目就去配置一遍CI的麻烦： 
+
+组上的CI配置： 
+![image.png](https://blogimage.houjiyi.com/Fg7sYGs2W59oL4r4mXTFeijrEa2V)
+
+应用上的CI配置：
+![image.png](https://blogimage.houjiyi.com/FslBcwpGTVi0QGKMNs51GbruGZ8k)
