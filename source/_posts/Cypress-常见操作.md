@@ -2,7 +2,6 @@
 title: Cypress 常见操作
 tags:
   - Web开发
-originContent: ''
 categories:
   - 自动化测试
 toc: false
@@ -10,7 +9,6 @@ date: 2021-09-17 13:52:36
 ---
 
 - 访问某个link
-
 ```javascript
 //访问百度
 cy.visit('httpf://www.baidu.com)
