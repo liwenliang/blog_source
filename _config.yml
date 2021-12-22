@@ -80,11 +80,8 @@ theme: yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  # 下方的GH_TOKEN会被.travis.yml中sed命令替换
-  # repo: https://GH_TOKEN@github.com/liwenliang/liwenliang.github.io.git
   repo: git@github.com:liwenliang/liwenliang.github.io.git
   branch: master
-
 
 sitemap:
     path: sitemap.xml
