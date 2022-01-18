@@ -2,7 +2,6 @@
 title: inquirer.js —— 一个用户与命令行交互的工具
 tags:
   - nodejs
-originContent: ''
 categories:
   - Web开发
 toc: false
@@ -43,6 +42,28 @@ const promptList = [
 inquirer.prompt(promptList).then(answers => {
     console.log(answers); // 返回的结果
 })
+```
+效果：
+![image.png](https://blogimage.houjiyi.com/FpCKD8ILrREeyTTFXny-oyrHeKDZ)
+
+### 1. input
+```javascript
+const promptList = [{
+    type: 'input',
+    message: '设置一个用户名:',
+    name: 'name',
+    default: "test_user" // 默认值
+},{
+    type: 'input',
+    message: '请输入手机号:',
+    name: 'phone',
+    validate: function(val) {
+        if(val.match(/\d{11}/g)) { // 校验位数
+            return true;
+        }
+        return "请输入11位数字";
+    }
+}];
 ```
 效果：
 ![image.png](https://blogimage.houjiyi.com/FpCKD8ILrREeyTTFXny-oyrHeKDZ)
