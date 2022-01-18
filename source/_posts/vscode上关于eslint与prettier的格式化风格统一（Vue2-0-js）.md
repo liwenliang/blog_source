@@ -1,8 +1,8 @@
 ---
 title: vscode上关于eslint与prettier的格式化风格统一（Vue2.0+js）
 tags:
-  - Web开发
   - vue
+  - Web开发
   - prettire
   - eslint
 categories:
@@ -91,7 +91,7 @@ module.exports = {
     node: true,
     es6: true
   },
-  extends: ['plugin:vue/recommended', '@vue/standard'],
+  extends: ['plugin:vue/recommended', 'standard'],
   parserOptions: {
     parser: '@babel/eslint-parser',
     sourceType: 'module'
@@ -189,7 +189,7 @@ setting.json文件部分配置：
   // 当然，也推荐设置为recentlyUsedByPrefix，即上次你选择或者输入过什么，这次就默认选中什么，比如你输入co，推荐值为const和constant（按顺序），上次你选择了constant，这次就还是默认选中cosntant
   "editor.suggestSelection": "recentlyUsedByPrefix",
   // 编辑器：保存即格式化
-  "editor.formatOnSave": true,
+  // "editor.formatOnSave": true,
   // 编辑器：设置默认格式化工具 有了这个就不用每个类型的文件都设置一个格式化工具，大部分用prettier，只有特殊情况需要单独设置
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // 编辑器：设置编辑器字体16号
@@ -217,7 +217,7 @@ setting.json文件部分配置：
   // 当然，也推荐设置为recentlyUsedByPrefix，即上次你选择或者输入过什么，这次就默认选中什么，比如你输入co，推荐值为const和constant（按顺序），上次你选择了constant，这次就还是默认选中cosntant
   "editor.suggestSelection": "recentlyUsedByPrefix",
   // 编辑器：保存即格式化
-  "editor.formatOnSave": true,
+  // "editor.formatOnSave": true,
   // 编辑器：设置默认格式化工具 有了这个就不用每个类型的文件都设置一个格式化工具，大部分用prettier，只有特殊情况需要单独设置
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // 编辑器：设置编辑器字体16号
@@ -260,12 +260,11 @@ setting.json文件部分配置：
 }
 ```
 
-有了这些配置还不够，还需要安装两个依赖，否则你在使用eslint格式化的时候，会报错：
+有了这些配置还不够，还需要安装个依赖，否则你在使用eslint格式化的时候，会报错：
 ![image.png](https://blogimage.houjiyi.com/FlGgAHGSzXJGozXCnK48wP4QMJ6o)
 
 ```bash
-"@babel/eslint-parser": "^7.12.16",
-"@vue/eslint-config-standard": "^6.1.0",
+"@babel/eslint-parser": "^7.12.16"
 ```
 
 安装完成以后再使用eslint的格式化可以将一些不规范的地方规范，同时与自动保存使用的prettire也不会冲突。
