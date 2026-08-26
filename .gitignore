@@ -5,6 +5,7 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
 public/
+.deploy_git/
 
 # Editor directories and files
 .idea
